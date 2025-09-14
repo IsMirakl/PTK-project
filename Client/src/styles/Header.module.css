@@ -1,0 +1,48 @@
+.header {
+    display: flex;
+    align-items: center;
+    height: 88px;
+    box-shadow: 0px 1px 10px 0px #00000040;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: 100%;
+}
+
+.navList {
+    margin-right: 70px;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 50px;
+
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 16px;
+}
+
+.headerLogo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 37px;
+}
+
+.loginButton {
+    width: 90px;
+    height: 43px;
+    margin-right: 23px;
+
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: white;
+
+
+    border-radius: 32px;
+    background: #0956C2;
+}
