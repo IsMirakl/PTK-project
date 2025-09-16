@@ -1,9 +1,11 @@
-import Header from '../Components/Header.tsx';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import Header from '../Components/Header.tsx';
+import Footer from '../Components/Footer.tsx';
 
 import Vk_icon from '../assets/icons/Vk_icon.svg';
 import style from './AuthPage.module.css';
-import { Link } from 'react-router-dom';
 
 const AuthPage: React.FC = () => {
   const [email, setEmail] = useState<string>('');
@@ -44,6 +46,7 @@ const AuthPage: React.FC = () => {
             </div>
       </form>
           </div>
+          <Footer/>
     </>
   );
 }
