@@ -5,7 +5,6 @@ import styles from "../styles/Footer.module.css";
 
 const Footer: React.FC = () => {
     return (
-        <>
         <footer className={styles.footer}>
             <div className={styles.container}>
                 <div className={styles.footerBlock}>
@@ -43,7 +42,6 @@ const Footer: React.FC = () => {
                 <p>© 2025 ПТК НовГУ. Все права защищены.</p>
             </div>
         </footer>
-        </>
     );
 }
 

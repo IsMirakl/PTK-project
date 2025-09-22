@@ -1,13 +1,18 @@
-import AuthPage from "./Pages/AuthPage.tsx";
-import HomePage from "./Pages/HomePage.tsx";
+import { useEffect } from "react";
+import { useAuth } from "./hooks/useAuth.ts";
+import AppRouter from "./routes/AppRouter.tsx";
 
 import './styles/global.css';
 
 function App() {
+  const {checkAuth} = useAuth();
+
+  useEffect(() => {
+    checkAuth();
+  }, []);
   return (
     <>
-    <HomePage/>
-    <AuthPage />
+    <AppRouter />
     </>
   )
 }

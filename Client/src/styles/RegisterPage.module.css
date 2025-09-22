@@ -1,0 +1,159 @@
+:root{
+    --color-white: #ffff;
+    --font-family: "Inter", sans-serif;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.formRegister{
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.legendRegister{
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 32px;
+    margin-left: 75px;
+    margin-bottom: 38px;
+}
+
+.inputRegister {
+    width: 349px;
+    height: 50px;
+    border: 1px solid #0956C2;
+    border-radius: 32px;
+
+    color: #0956C299;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    
+    padding-left: 28px;
+}
+
+.buttonContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttonRegister{
+    width: 349px;
+    height: 51px;
+    background-color: #0956C2;
+    border-radius: 32px;
+    
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+
+    transition: background-color 0.3s, transform 0.2s;
+
+}
+
+.loginText{
+    padding-top: 17px;
+
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 44px;
+}
+
+.loginLink{
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 15px;
+    color: #0956C2;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.dividerLine {
+  flex: 1;
+  border: none;
+  border: 1px solid #00000066;
+  margin: 0;
+}
+
+.dividerText {
+  font-family: "Roboto", sans-serif;
+  font-style: Regular;
+  white-space: nowrap;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.socialRegister{
+    width: 349px;
+    height: 60px;
+    border: 2px solid #0956C2;
+    border-radius: 64px;
+
+    transition: transform 0.2s;
+
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.socialIcon{
+    padding-left: 21px;
+}
+
+.socialLink{
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 16px;
+    line-height: 100%;
+
+    padding-left: 15px;
+}
+
+
+/* Animation */
+
+
+.buttonAuth:hover {
+    background-color: #106ced;
+    transform: translateY(-2px);
+}
+
+.buttonRegister:active {
+    transform: translateY(1px);
+}
+
+.socialRegister:active {
+    transform: translateY(5px);
+}
+
+.errorMessage {
+    color: #ff4444;
+    background-color: #ffebee;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ffcdd2;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.buttonRegister:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

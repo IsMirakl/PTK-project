@@ -5,8 +5,12 @@ import {
   Navigate,
 } from "react-router-dom";
 
+import ProtectedRoute from '../Components/ProtectedRoute';
 import HomePage from '../Pages/HomePage';
 import AuthPage from "../Pages/AuthPage";
+import RegisterPage from "../Pages/RegisterPage";
+import ProfilePage from "../Pages/ProfilePage";
+import GuestRoute from "./GuestRoute";
 
 const AppRouter: React.FC = () => {
     return (
@@ -14,8 +18,34 @@ const AppRouter: React.FC = () => {
             <Routes>
                 <Route path='/' element={<Navigate to="/home" replace />} />
                 <Route path='/home' element={<HomePage />} />     
-                <Route path='/auth' element={<AuthPage />} />  
-                <Route path='/register' element={<HomePage />} />            
+                       <Route 
+          path='/auth' 
+          element={
+            <GuestRoute>
+              <AuthPage />
+            </GuestRoute>
+          } 
+        />  
+        
+        <Route 
+          path='/register' 
+          element={
+            <GuestRoute>
+              <RegisterPage />
+            </GuestRoute>
+          } 
+        />
+
+                <Route
+                  path="/profile"
+                  element={
+                    <ProtectedRoute>
+                      <ProfilePage />
+                    </ProtectedRoute>
+                  }
+                />
+                
+                <Route path="*" element={<Navigate to="/home" replace />} />
             </Routes>
         </Router>
     )
