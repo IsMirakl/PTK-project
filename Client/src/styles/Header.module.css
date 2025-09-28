@@ -12,13 +12,18 @@
     width: 100%;
 }
 
+.nav {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+
 .navList {
-    margin-right: 70px;
     display: flex;
     align-items: center;
     list-style: none;
     gap: 50px;
-    margin-left: 50px;
+    margin: 0;
 
     font-family: "Inter", sans-serif;
     font-weight: 500;
@@ -33,17 +38,31 @@
     margin-left: 37px;
 }
 
+.authSection {
+    display: flex;
+    justify-content: flex-end;
+    min-width: 113px;
+    margin-right: 23px;
+}
+
 .loginButton {
     width: 90px;
     height: 43px;
-    margin-right: 23px;
 
     font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 14px;
     color: white;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     border-radius: 32px;
     background: #0956C2;
+}
+
+.profileSection {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }

@@ -45,6 +45,7 @@
     height: 51px;
     background-color: #0956C2;
     border-radius: 32px;
+    cursor: pointer;
     
     color: white;
     font-family: "Inter", sans-serif;

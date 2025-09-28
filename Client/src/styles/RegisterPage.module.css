@@ -130,7 +130,7 @@
 /* Animation */
 
 
-.buttonAuth:hover {
+.buttonRegister:hover {
     background-color: #106ced;
     transform: translateY(-2px);
 }

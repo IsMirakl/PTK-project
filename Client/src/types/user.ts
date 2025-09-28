@@ -2,8 +2,7 @@ export type UserStatus = 'guest' | 'banned' | 'student' | 'admin' | 'moderator';
 
 export interface User {
   id: number,
-  firstName: string;
-  lastName: string;
+  fullName: string;
   email: string;
   status: UserStatus;
   registrationDate: string;
@@ -16,10 +15,9 @@ export interface LoginData {
 }
 
 export interface RegisterData {
+  fullName: string;
   email: string;
   password: string;
-  firstName: string;
-  lastName: string;
 }
 
 export interface VKAuthData {

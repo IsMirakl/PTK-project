@@ -18,7 +18,6 @@ let failedQueue: Array<{
   reject: (error: any) => void;
 }> = [];
 
-// Обработка очереди - выполняем все запросы с новым токеном
 const processQueue = (error: any = null, token: string | null = null) => {
   failedQueue.forEach(({ resolve, reject }) => {
     if (error) {
@@ -35,7 +34,6 @@ export const getAuthHeader = () => {
   return token ? { Authorization: `Bearer ${token}` } : {};
 };
 
-// Автоматически добавляем токен в заголовки
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('accessToken');
   if (token && config.headers) {

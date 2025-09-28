@@ -9,8 +9,7 @@ import Vk_icon from '../assets/icons/Vk_icon.svg';
 
 const RegisterPage: React.FC = () => {
     const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
+        fullName: '',
         email: '',
         password: ''
     });
@@ -30,7 +29,7 @@ const RegisterPage: React.FC = () => {
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         
-        if (!formData.firstName || !formData.lastName || !formData.email || !formData.password) {
+        if (!formData.fullName || !formData.email || !formData.password) {
             alert('Все поля обязательны для заполнения');
             return;
         }
@@ -70,20 +69,10 @@ const RegisterPage: React.FC = () => {
                     
                     <input 
                         type="text" 
-                        name="firstName"
-                        placeholder="Имя" 
+                        name="fullName"
+                        placeholder="ФИО" 
                         className={style.inputRegister}
-                        value={formData.firstName}
-                        onChange={handleInputChange}
-                        required
-                    />
-                    
-                    <input 
-                        type="text" 
-                        name="lastName"
-                        placeholder="Фамилия" 
-                        className={style.inputRegister}
-                        value={formData.lastName}
+                        value={formData.fullName}
                         onChange={handleInputChange}
                         required
                     />

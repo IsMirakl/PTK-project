@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 import styles from "../styles/Header.module.css";
 import Logotype from '../assets/logo/Logotype.svg';
@@ -30,6 +30,8 @@ import { useAuth } from "../hooks/useAuth";
   ] 
 
   const Header: React.FC = () => {
+    const location = useLocation();
+    const isAuthPage = location.pathname === '/auth';
 
     const { user, logout } = useAuth();
     const isAuthenticated = !!user;
@@ -41,28 +43,27 @@ import { useAuth } from "../hooks/useAuth";
     await logout();
     window.location.href = '/home';
   };
-    return (
-      <>
-        <header className={styles.header}>
-          <div className={styles.container}>
-              <div className={styles.headerLogo}> 
-                <NavLink to='/home'>
-                  <img src={Logotype} alt="Логотип"/>
-                </NavLink>
-                {/* <NavLink to='' className={styles.nameProject}>Птк Знания
-                </NavLink> */}
-              </div>
-            <nav className={styles.nav}>
-              <ul className={styles.navList}>
-              {NAV_ITEMS.map((item) => (
-                <li key={item.label}>
-                  <Link to={item.to}>{item.label}</Link>
-                </li>
-              ))}
-              </ul>
-            </nav>
-            {isAuthenticated ? (
-            <div>
+ return (
+  <>
+    <header className={styles.header}>
+      <div className={styles.container}>
+        <div className={styles.headerLogo}> 
+          <NavLink to='/home'>
+            <img src={Logotype} alt="Логотип"/>
+          </NavLink>
+        </div>
+        <nav className={styles.nav}>
+          <ul className={styles.navList}>
+            {NAV_ITEMS.map((item) => (
+              <li key={item.label}>
+                <Link to={item.to}>{item.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div className={styles.authSection}>
+          {isAuthenticated ? (
+            <div className={styles.profileSection}>
               <Link to={ROUTES.PROFILE}>
                 Профиль
               </Link>
@@ -71,14 +72,15 @@ import { useAuth } from "../hooks/useAuth";
               </button>
             </div>
           ) : (
-            <button className={styles.loginButton}>
-              <Link to='/auth'>Войти</Link>
-            </button>
+            !isAuthPage && (
+            <Link to='/auth' className={styles.loginButton}>Войти</Link>
+            )
           )}
-          </div>
-        </header>
-      </>
-    );
-  }
+        </div>
+      </div>
+    </header>
+  </>
+  );
+}
 
   export default Header;

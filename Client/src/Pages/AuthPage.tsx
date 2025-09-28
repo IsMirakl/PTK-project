@@ -51,7 +51,6 @@ const AuthPage: React.FC = () => {
     }
   };
 
-  // Функция для возврата к вводу email
   const handleBackToEmail = () => {
     setShowPasswordInput(false);
     setPassword('');
