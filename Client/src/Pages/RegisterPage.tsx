@@ -30,7 +30,6 @@ const RegisterPage: React.FC = () => {
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         
-        // Валидация
         if (!formData.firstName || !formData.lastName || !formData.email || !formData.password) {
             alert('Все поля обязательны для заполнения');
             return;
