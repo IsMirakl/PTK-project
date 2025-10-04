@@ -15,7 +15,9 @@ export interface LoginData {
 }
 
 export interface RegisterData {
-  fullName: string;
+  firstName: string;
+  lastName: string;
+  middleName?: string;
   email: string;
   password: string;
 }

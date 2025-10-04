@@ -18,6 +18,19 @@ export const useAuth = () => {
     initializeAuth();
   }, []);
 
+  const buildFullName = (firstName: string, lastName: string, middleName?: string): string => {
+    return `${lastName} ${firstName}${middleName ? ` ${middleName}` : ''}`.trim();
+  };
+
+  const parseFullName = (fullName: string) => {
+    const parts = fullName.split(' ');
+    return {
+      lastName: parts[0] || '',
+      firstName: parts[1] || '',
+      middleName: parts[2] || ''
+    };
+  };
+
   const login = async (data: LoginData): Promise<boolean> => {
     setIsLoading(true);
     setError('');
@@ -37,7 +50,13 @@ export const useAuth = () => {
     setIsLoading(true);
     setError('');
     try {
-      const response = await authApi.register(data);
+      
+      const registerData = {
+        ...data,
+        fullName: buildFullName(data.firstName, data.lastName, data.middleName)
+      };
+
+      const response = await authApi.register(registerData);
       setUser(response.user);
       return true;
     } catch (err: any) {
@@ -115,6 +134,7 @@ export const useAuth = () => {
     register,
     vkAuth,
     logout,
-    checkAuth
+    checkAuth,
+    parseFullName
   };
 };

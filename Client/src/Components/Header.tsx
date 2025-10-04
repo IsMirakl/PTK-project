@@ -15,13 +15,10 @@ import { useAuth } from "../hooks/useAuth";
     PROFILE: '/profile'
   } as const;
 
-
   interface NavItem {
     to: string;
     label: string;
   }
-
-
 
   const NAV_ITEMS: NavItem[] = [
     {to: ROUTES.COURSES, label: 'Все курсы'},
@@ -54,7 +51,8 @@ import { useAuth } from "../hooks/useAuth";
           <ul className={styles.navList}>
             {NAV_ITEMS.map((item) => (
               <li key={item.label}>
-                <Link to={item.to}>{item.label}</Link>
+                <NavLink to={item.to} className={({isActive}) => isActive ? 
+                `${styles.navLink} ${styles.active}` : styles.navLink}>{item.label}</NavLink>
               </li>
             ))}
           </ul>
@@ -81,4 +79,4 @@ import { useAuth } from "../hooks/useAuth";
   );
 }
 
-  export default Header;
+export default Header;

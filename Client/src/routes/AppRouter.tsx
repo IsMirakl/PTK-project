@@ -11,6 +11,7 @@ import AuthPage from "../Pages/AuthPage";
 import RegisterPage from "../Pages/RegisterPage";
 import ProfilePage from "../Pages/ProfilePage";
 import GuestRoute from "./GuestRoute";
+import MyCoursesPage from "../Pages/MyCoursesPage";
 
 const AppRouter: React.FC = () => {
     return (
@@ -42,6 +43,13 @@ const AppRouter: React.FC = () => {
                     <ProtectedRoute>
                       <ProfilePage />
                     </ProtectedRoute>
+                  }
+                />
+
+                <Route
+                  path="/my-courses"
+                  element={
+                    <MyCoursesPage/>
                   }
                 />
                 

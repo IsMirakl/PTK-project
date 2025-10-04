@@ -9,7 +9,9 @@ import Vk_icon from '../assets/icons/Vk_icon.svg';
 
 const RegisterPage: React.FC = () => {
     const [formData, setFormData] = useState({
-        fullName: '',
+        firstName: '',
+        lastName: '',
+        middleName: '',
         email: '',
         password: ''
     });
@@ -28,12 +30,12 @@ const RegisterPage: React.FC = () => {
     const handleSubmit = useCallback(async (e: FormEvent) => {
         e.preventDefault();
         
-        if (!formData.fullName || !formData.email || !formData.password) {
+        if (!formData.firstName || !formData.lastName || !formData.email || !formData.password) {
             alert('Все поля обязательны для заполнения');
             return;
         }
         
-        if (formData.password.length < 6) {
+        if (formData.password.length < 8) {
             alert('Пароль должен содержать минимум 6 символов');
             return;
         }
@@ -62,10 +64,28 @@ const RegisterPage: React.FC = () => {
                     
                     <input 
                         type="text" 
-                        name="fullName"
-                        placeholder="ФИО" 
+                        name="firstName"
+                        placeholder="Имя" 
                         className={style.inputRegister}
-                        value={formData.fullName}
+                        value={formData.firstName}
+                        onChange={handleInputChange}
+                        required
+                    />
+                      <input 
+                        type="text" 
+                        name="lastName"
+                        placeholder="Фамилия" 
+                        className={style.inputRegister}
+                        value={formData.lastName}
+                        onChange={handleInputChange}
+                        required
+                    />
+                    <input 
+                        type="text" 
+                        name="middleName"
+                        placeholder="Отчество" 
+                        className={style.inputRegister}
+                        value={formData.middleName}
                         onChange={handleInputChange}
                         required
                     />
