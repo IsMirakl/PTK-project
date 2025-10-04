@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react';
+import { useCallback, useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import Header from '../Components/Header.tsx';
@@ -16,14 +16,14 @@ const AuthPage: React.FC = () => {
   const navigate = useNavigate();
   const { vkAuth } = useAuth();
 
-  const handleEmailSubmit = (e: FormEvent) => {
+  const handleEmailSubmit = useCallback((e: FormEvent) => {
     e.preventDefault();
     if (email && !showPasswordInput) {
       setShowPasswordInput(true);
     }
-  };
+  }, [email, showPasswordInput]);
 
-  const handleLoginSubmit = async (e: FormEvent) => {
+  const handleLoginSubmit = useCallback(async (e: FormEvent) => {
     e.preventDefault();
     if (email && password) {
       const success = await login({ email, password });
@@ -31,30 +31,29 @@ const AuthPage: React.FC = () => {
         navigate('/profile');
       }
     }
-  };
+  }, [email, password, login, navigate]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     if (!showPasswordInput) {
       setEmail(e.target.value);
     } else {
       setPassword(e.target.value);
     }
-  };
+  }, [showPasswordInput]);
 
-  const handleVKAuth = async () => {
+  const handleVKAuth = useCallback(async () => {
     const code = 'ваш_code_от_vk';
     const redirectUri = 'ваш_redirect_uri';
-    console.log('work');
     const success = await vkAuth({ code, redirectUri });
     if (success) {
       navigate('/profile');
     }
-  };
+  }, [vkAuth, navigate]);
 
-  const handleBackToEmail = () => {
+  const handleBackToEmail = useCallback(() => {
     setShowPasswordInput(false);
     setPassword('');
-  };
+  }, []);
 
   return (
     <>

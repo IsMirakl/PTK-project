@@ -1,4 +1,5 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
+import { useCallback } from "react";
 
 import styles from "../styles/Header.module.css";
 import Logotype from '../assets/logo/Logotype.svg';
@@ -36,13 +37,10 @@ import { useAuth } from "../hooks/useAuth";
     const { user, logout } = useAuth();
     const isAuthenticated = !!user;
 
-    console.log('User:', user);
-    console.log('Is authenticated:', isAuthenticated);
-
-  const handleLogout = async () => {
+  const handleLogout =  useCallback(async () => {
     await logout();
     window.location.href = '/home';
-  };
+  }, [logout]);
  return (
   <>
     <header className={styles.header}>

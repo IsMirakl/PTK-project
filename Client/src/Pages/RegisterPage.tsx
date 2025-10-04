@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useState, type FormEvent } from 'react';
+import { useCallback, useState, type FormEvent } from 'react';
 import { useAuth } from '../hooks/useAuth';
 
 import Header from "../Components/Header";
@@ -14,19 +14,18 @@ const RegisterPage: React.FC = () => {
         password: ''
     });
     
-    const [confirmPassword, setConfirmPassword] = useState('');
     const { register, isLoading, error } = useAuth();
     const navigate = useNavigate();
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({
             ...prev,
             [name]: value
         }));
-    };
+    }, []);
 
-    const handleSubmit = async (e: FormEvent) => {
+    const handleSubmit = useCallback(async (e: FormEvent) => {
         e.preventDefault();
         
         if (!formData.fullName || !formData.email || !formData.password) {
@@ -39,11 +38,6 @@ const RegisterPage: React.FC = () => {
             return;
         }
         
-        if (formData.password !== confirmPassword) {
-            alert('Пароли не совпадают');
-            return;
-        }
-        
         if (!formData.email.includes('@')) {
             alert('Введите корректный email адрес');
             return;
@@ -53,12 +47,11 @@ const RegisterPage: React.FC = () => {
         if (success) {
             navigate('/profile');
         }
-    };
+    }, [register, navigate, formData]);
 
-    const handleVKAuth = () => {
+    const handleVKAuth = useCallback(() => {
         // Здесь будет логика VK авторизации
-        console.log('VK auth');
-    };
+    }, []);
 
     return (
         <>
@@ -96,15 +89,6 @@ const RegisterPage: React.FC = () => {
                         onChange={handleInputChange}
                         required
                         minLength={6}
-                    />
-                    
-                    <input 
-                        type="password" 
-                        placeholder="Подтвердите пароль" 
-                        className={style.inputRegister}
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        required
                     />
                     
                     {error && (
