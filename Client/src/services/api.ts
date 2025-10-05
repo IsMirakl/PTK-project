@@ -2,6 +2,7 @@
 import axios from "axios";
 import type { AxiosRequestConfig } from "axios";
 import type { LoginData, RegisterData, VKAuthData, AuthResponse, User } from "../types/user";
+import type {CourseCardProps} from "../types/CouerseCard";
 
 const api = axios.create({
   baseURL: "https://localhost:PORT/api",
@@ -127,6 +128,30 @@ export const authApi = {
     const response = await api.get('/auth/profile');
     return response.data;
   },
+};
+
+export const courseCardApi = {
+  getAllCourses: async (): Promise<CourseCardProps[]> => {
+    const response = await api.get('/course');
+    return response.data;
+  },
+
+  getCourseById: async (id: string): Promise<CourseCardProps> => {
+    const response = await api.get(`/course/${id}`);
+    return response.data;
+  },
+
+  createCourse: async (data: {
+    name: string,
+    description: string,
+    tags: string[],
+  }): Promise<CourseCardProps> => {
+    const response = await api.post('/course', data);
+    return response.data;
+  }
+  
+  // updateCourse
+  // deleteCouse
 };
 
 export default api;
