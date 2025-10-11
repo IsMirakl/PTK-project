@@ -5,7 +5,7 @@ import Header from '../Components/Header.tsx';
 import Footer from '../Components/Footer.tsx';
 
 import Vk_icon from '../assets/icons/Vk_icon.svg';
-import style from '../styles/AuthPage.module.css';
+import style from '../styles/pages/AuthPage.module.css';
 import { useAuth } from '../hooks/useAuth.ts';
 
 const AuthPage: React.FC = () => {

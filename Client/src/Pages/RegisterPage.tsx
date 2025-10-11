@@ -4,7 +4,7 @@ import { useAuth } from '../hooks/useAuth';
 
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-import style from "../styles/RegisterPage.module.css";
+import style from "../styles/pages/RegisterPage.module.css";
 import Vk_icon from '../assets/icons/Vk_icon.svg';
 
 const RegisterPage: React.FC = () => {

@@ -20,6 +20,7 @@ const MyCoursesPage: React.FC = () => {
 
     const courses = mockCourses;
 
+
     return(
         <>
         <Header />

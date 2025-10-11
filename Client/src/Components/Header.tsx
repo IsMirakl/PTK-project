@@ -1,7 +1,7 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useCallback } from "react";
 
-import styles from "../styles/Header.module.css";
+import styles from "../styles/components/Header.module.css";
 import Logotype from '../assets/logo/Logotype.svg';
 import { useAuth } from "../hooks/useAuth";
 

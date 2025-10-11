@@ -1,12 +1,10 @@
-import styles from "../styles/Card.module.css";
+import styles from "../styles/components/Card.module.css";
 import type { CourseCardProps } from "../types/CouerseCard";
 
 
 export const CourseCard: React.FC<CourseCardProps> = ({title, tags, description}) => {
     return (
     <div className={styles.cardContainer}>
-      <h2>{title}</h2>
-      
       <div className={styles.bodyCard}>
         {tags.map((tag, index) => (
           <span key={index}>{tag}</span>
