@@ -36,7 +36,7 @@ const RegisterPage: React.FC = () => {
         }
         
         if (formData.password.length < 8) {
-            alert('Пароль должен содержать минимум 6 символов');
+            alert('Пароль должен содержать минимум 8 символов');
             return;
         }
         
@@ -52,7 +52,6 @@ const RegisterPage: React.FC = () => {
     }, [register, navigate, formData]);
 
     const handleVKAuth = useCallback(() => {
-        // Здесь будет логика VK авторизации
     }, []);
 
     return (

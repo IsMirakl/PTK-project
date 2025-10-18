@@ -37,25 +37,25 @@ const AppRouter: React.FC = () => {
           } 
         />
 
-                <Route
-                  path="/profile"
-                  element={
-                    <ProtectedRoute>
-                      <ProfilePage />
-                    </ProtectedRoute>
-                  }
-                />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <ProfilePage />
+            </ProtectedRoute>
+          }
+        />
 
-                <Route
-                  path="/my-courses"
-                  element={
-                    <MyCoursesPage/>
-                  }
-                />
+        <Route
+          path="/my-courses"
+          element={
+            <MyCoursesPage/>
+          }
+        />
                 
-                <Route path="*" element={<Navigate to="/home" replace />} />
-            </Routes>
-        </Router>
+        <Route path="*" element={<Navigate to="/home" replace />} />
+    </Routes>
+</Router>
     )
 }
 export default AppRouter;
