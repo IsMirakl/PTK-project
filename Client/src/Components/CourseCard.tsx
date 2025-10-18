@@ -1,18 +1,23 @@
 import styles from "../styles/components/Card.module.css";
 import type { CourseCardProps } from "../types/CouerseCard";
-
+import img from "../assets/image/2.jpg"
 
 export const CourseCard: React.FC<CourseCardProps> = ({title, tags, description}) => {
     return (
     <div className={styles.cardContainer}>
+      <img src={img} alt="" />
       <div className={styles.bodyCard}>
-        {tags.map((tag, index) => (
-          <span key={index}>{tag}</span>
-        ))}
+        <div className={styles.tagsWrapper}>
+          {tags.map((tag, index) => (
+            <span key={index} className={styles.tagContainer}>{tag}</span>
+          ))}
+        </div>
         <h2>{title}</h2>
         <p>{description}</p>
         </div>
-      <button>Записаться</button>
+        <div className={styles.buttonContainer}>
+          <button className={styles.cardButoon}>Подбронее</button>
+        </div>
     </div>
     );
 }

@@ -1,0 +1,39 @@
+:root{
+     --font-family: "Inter", sans-serif;
+     --secondary-color: #0956C2;
+}
+
+.cardContainer{
+    width: 375px;
+    height: 609px;
+    background-color: white;
+    border-radius: 24px;
+}
+
+.bodyCard{
+    font-family: var(--font-family);
+}
+
+.tagContainer{
+    width: 140;
+    height: 25;
+    opacity: 1;
+    border-radius: 32px;
+    background-color: #0956C21A;
+}
+
+.buttonContainer{
+    padding: 22px 15px 19px;
+}
+
+.cardButoon {
+    width: 135px;
+    height: 49px;
+    background-color: var(--secondary-color);
+    border-radius: 32px;
+
+    color: white;
+    font-family: var(--font-family);
+    font-size: 14px;
+    font-weight: 600;
+}

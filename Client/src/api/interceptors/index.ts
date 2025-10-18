@@ -1,0 +1,1 @@
+export { setupAuthInterceptor } from './auth';
