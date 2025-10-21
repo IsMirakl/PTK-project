@@ -6,6 +6,12 @@ export const CourseCard: React.FC<CourseCardProps> = ({title, tags, description}
     return (
     <div className={styles.cardContainer}>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+      <div className={styles.imageContainer}>
+        <img src={img} alt="" />
+      </div>
+>>>>>>> 9f362be (fix(Course Card Component): Исправлен недочет с неккоректным контейниром карточки)
 =======
       <div className={styles.imageContainer}>
         <img src={img} alt="" />
