@@ -5,6 +5,12 @@ import type { CourseCardProps } from "../types/CouerseCard";
 export const CourseCard: React.FC<CourseCardProps> = ({title, tags, description}) => {
     return (
     <div className={styles.cardContainer}>
+<<<<<<< HEAD
+=======
+      <div className={styles.imageContainer}>
+        <img src={img} alt="" />
+      </div>
+>>>>>>> 9f362be (fix(Course Card Component): Исправлен недочет с неккоректным контейниром карточки)
       <div className={styles.bodyCard}>
         {tags.map((tag, index) => (
           <span key={index}>{tag}</span>
