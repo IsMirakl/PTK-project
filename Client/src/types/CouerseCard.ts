@@ -1,12 +1,14 @@
-export interface CourseCardProps {
+export interface CourseDTO {
     id: string;
-    title: string;
+    name: string;
     tags: string[];
     description: string;
-    imageUrl?: string;
-    data?: string;
-    authorName?: string;
-    authorImgUrl?: string;
-    subscribedCount?: number;
-    periodCourse?: string;
+    previewUrl: string;
+    handle: string;
+}
+
+export interface CreateCourseDTO {
+    name: string;
+    desciption: string;
+    tags: string[];
 }
