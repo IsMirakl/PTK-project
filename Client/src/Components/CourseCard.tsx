@@ -5,7 +5,9 @@ import img from "../assets/image/2.jpg"
 export const CourseCard: React.FC<CourseCardProps> = ({title, tags, description}) => {
     return (
     <div className={styles.cardContainer}>
-      <img src={img} alt="" />
+      <div className={styles.imageContainer}>
+        <img src={img} alt="" />
+      </div>
       <div className={styles.bodyCard}>
         <div className={styles.tagsWrapper}>
           {tags.map((tag, index) => (
