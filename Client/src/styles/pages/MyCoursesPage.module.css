@@ -7,7 +7,7 @@
 
 .container{
     display: flex;
-    gap: 48px;
+    gap: 3rem;
     justify-content: center;
 }
 
@@ -15,15 +15,15 @@ h1{
     font-family: var(--font-family-Inter);
     font-weight: 600;
     font-style: Semi Bold;
-    font-size: 32px;
+    font-size: 2rem;
 }
 
 .welcomeSection{
-    width: 1215px;
+    width: 75.9375rem;
 
     display: flex;
     justify-content: space-between;
-    margin: 49px 0px 49px 70px;
+    margin: 3.0625rem 0rem 3.0625rem 4.375rem;
 }
 
 .welcomeSection > div > p{
@@ -32,8 +32,8 @@ h1{
     font-weight: 500;
     font-family: Montserrat;
     line-height: 100%;
-    font-size: 18px;
-    padding-top: 16px;
+    font-size: 1.125rem;
+    padding-top: 1rem;
 }
 
 
@@ -41,11 +41,11 @@ h1{
     color: white;
     font-family: var(--font-family);
     font-weight: 600;
-    font-size: 14px;
+    font-size: 0.875rem;
 
 
-    width: 153px;
-    height: 49px;
+    width: 9.5625rem;
+    height: 3.0625rem;
     background-color: var(--secondary-color);
     border-radius: 100px;
 }

@@ -28,9 +28,9 @@ const MyCoursesPage: React.FC = () => {
         <>
         <Header />
         <div className={styles.welcomeSection}>
-            <div>
-            <h1>Добро пожаловать, {firstName}!</h1>
-            <p>У вас 3 активных курса и 36 студентов</p>
+            <div>                
+                <h1>Добро пожаловать, {firstName}!</h1>
+                <p>У вас 3 активных курса и 36 студентов</p>
             </div>
             <div className={styles.buttonCreateCourse}>
                 <button>
