@@ -1,0 +1,58 @@
+:root{
+    --font-family-Inter: "Inter", sans-serif;
+    --font-family-Montserrat: "Montserrat", sans-serif;
+    --secondary-color: #0956C2;
+}
+
+
+.container{
+    display: flex;
+    gap: 48px;
+    justify-content: center;
+}
+
+h1{
+    font-family: var(--font-family-Inter);
+    font-weight: 600;
+    font-style: Semi Bold;
+    font-size: 32px;
+}
+
+.welcomeSection{
+    width: 1215px;
+
+    display: flex;
+    justify-content: space-between;
+    margin: 49px 0px 49px 70px;
+}
+
+.welcomeSection > div > p{
+    font-family: var(--font-family-Montserrat);
+    color: #00000080;
+    font-weight: 500;
+    font-family: Montserrat;
+    line-height: 100%;
+    font-size: 18px;
+    padding-top: 16px;
+}
+
+
+.buttonCreateCourse button{
+    color: white;
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 14px;
+
+
+    width: 153px;
+    height: 49px;
+    background-color: var(--secondary-color);
+    border-radius: 100px;
+}
+
+.buttonCreateCourse > button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
