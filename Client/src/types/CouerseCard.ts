@@ -9,6 +9,6 @@ export interface CourseDTO {
 
 export interface CreateCourseDTO {
     name: string;
-    desciption: string;
+    description: string;
     tags: string[];
 }

@@ -1,34 +1,56 @@
-import type { CourseCardProps } from "../../types/CouerseCard";
+import type { CourseDTO, CreateCourseDTO } from "../../types/CouerseCard";
 import { api } from "../axiosConfig";
 
 
 
 export const courseCardApi = {
-  getAllCourses: async (): Promise<CourseCardProps[]> => {
-    const response = await api.get('/course');
+  getAllCourses: async (): Promise<CourseDTO[]> => {
+    const response = await api.get('/v0/course');
     return response.data;
   },
 
-  getCourseById: async (id: string): Promise<CourseCardProps> => {
-    const response = await api.get(`/course/${id}`);
+  createCourse: async (courseDate: CreateCourseDTO, preview?: File): Promise<CourseDTO> => {
+    const formData = new FormData();
+
+    formData.append('course', new Blob([JSON.stringify(courseDate)], {
+      type: 'application/json'
+    }));
+    
+    if(preview){
+      formData.append('preview', preview)
+    }
+    const response = await api.post('/v0/course', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
     return response.data;
   },
 
-  createCourse: async (data: {
-    name: string,
-    description: string,
-    tags: string[],
-  }): Promise<CourseCardProps> => {
-    const response = await api.post('/course', data);
+  getCourseById: async (id: string): Promise<CourseDTO> => {
+    const response = await api.get(`/v0/course/id/${id}`);
     return response.data;
   },
 
-  updateCourse: async (id: string, data: Partial<CourseCardProps>): Promise<CourseCardProps> => {
-    const response = await api.patch(`/course/${id}`, data);
+
+  getCourseByHandle: async (handle: string): Promise<CourseDTO> => {
+    const response = await api.get(`/v0/course/handle/${handle}`);
+    return response.data;
+  },
+  
+  updateCoursePreview: async (id: string, file:File): Promise<CourseDTO> => {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const response = await api.patch(`/v0/course/${id}`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
     return response.data;
   },
 
   delete: async (id: string): Promise<void> => {
-    await api.delete(`/course/${id}`);
+    await api.delete(`/v0/course/${id}`);
   }
 };
