@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from "react"
 import type { CourseCardProps } from "../types/CouerseCard"
-import { courseCardApi } from "../services/api";
+import { courseCardApi } from '../api';
 
 export const useCourse = () => {
     const [course, setCourse] = useState<CourseCardProps[]>([]);
@@ -13,7 +14,6 @@ export const useCourse = () => {
             try {
                 const data = await courseCardApi.getAllCourses();
                 setCourse(data);
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             } catch (err) {
                 setError('ошибка загрузки курв');
             } finally {

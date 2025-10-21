@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
         <footer className={styles.footer}>
             <div className={styles.container}>
                 <div className={styles.footerBlock}>
-                <button className={styles.footerButton}><span>Птк новгу</span></button>
+                <div className={styles.footerPanel}><span>Птк новгу</span></div>
                 <p>Портал дополнительного образования
 Политехнического колледжа НовГУ</p>
             </div>

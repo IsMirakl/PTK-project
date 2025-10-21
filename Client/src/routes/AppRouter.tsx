@@ -46,12 +46,23 @@ const AppRouter: React.FC = () => {
           }
         />
 
+<<<<<<< HEAD
         <Route
           path="/my-courses"
           element={
             <MyCoursesPage/>
           }
         />
+=======
+                <Route
+                  path="/my-courses"
+                  element={
+                    <GuestRoute>
+                    <MyCoursesPage/>
+                    </GuestRoute>
+                  }
+                />
+>>>>>>> main
                 
         <Route path="*" element={<Navigate to="/home" replace />} />
     </Routes>

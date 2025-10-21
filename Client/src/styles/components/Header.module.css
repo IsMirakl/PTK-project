@@ -1,7 +1,7 @@
 .header {
     display: flex;
     align-items: center;
-    height: 88px;
+    height: 5.5rem;
     box-shadow: 0px 1px 10px 0px #00000040;
 }
 
@@ -22,13 +22,13 @@
     display: flex;
     align-items: center;
     list-style: none;
-    gap: 50px;
+    gap: 3.125rem;
     margin: 0;
 
     font-family: "Inter", sans-serif;
     font-weight: 500;
     font-style: Medium;
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 .navLink.active {
@@ -38,24 +38,24 @@
 .headerLogo {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-left: 37px;
+    gap: 0.624rem;
+    margin-left: 2.3125rem;
 }
 
 .authSection {
     display: flex;
     justify-content: flex-end;
     min-width: 113px;
-    margin-right: 23px;
+    margin-right: 1.4375rem;
 }
 
 .loginButton {
-    width: 90px;
-    height: 43px;
+    width: 5.624rem;
+    height: 2.6875rem;
 
     font-family: "Inter", sans-serif;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 0.875rem;
     color: white;
     display: flex;
     justify-content: center;
@@ -68,5 +68,5 @@
 .profileSection {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 0.9375rem;
 }
