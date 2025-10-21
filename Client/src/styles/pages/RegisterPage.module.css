@@ -11,32 +11,32 @@
 }
 
 .formRegister{
-    padding: 40px;
+    padding: 2.5rem;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 1.25rem;
 }
 
 .legendRegister{
     font-family: "Inter", sans-serif;
     font-weight: 500;
-    font-size: 32px;
-    margin-left: 75px;
-    margin-bottom: 38px;
+    font-size: 2rem;
+    margin-left: 4.6875rem;
+    margin-bottom: 2.375rem;
 }
 
 .inputRegister {
-    width: 349px;
-    height: 50px;
+    width: 21.8125rem;
+    height: 3.125rem;
     border: 1px solid #0956C2;
     border-radius: 32px;
 
     color: black;
     font-family: "Roboto", sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 500;
     
-    padding-left: 28px;
+    padding-left: 1.75rem;
 }
 
 .buttonContainer{
@@ -46,33 +46,33 @@
 }
 
 .buttonRegister{
-    width: 349px;
-    height: 51px;
+    width: 21.8125rem;
+    height: 3.1875rem;
     background-color: #0956C2;
     border-radius: 32px;
     
     color: white;
     font-family: "Inter", sans-serif;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 1rem;
 
     transition: background-color 0.3s, transform 0.2s;
 
 }
 
 .loginText{
-    padding-top: 17px;
+    padding-top: 1.0625rem;
 
     font-family: "Inter", sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 44px;
 }
 
 .loginLink{
     font-family: "Inter", sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 15px;
     color: #0956C2;
 }
@@ -80,8 +80,8 @@
 .divider {
   display: flex;
   align-items: center;
-  gap: 15px;
-  margin: 20px 0;
+  gap: 0.9375rem;
+  margin: 1.25rem 0;
 }
 
 .dividerLine {
@@ -96,12 +96,12 @@
   font-style: Regular;
   white-space: nowrap;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .socialRegister{
-    width: 349px;
-    height: 60px;
+    width: 21.8125rem;
+    height: 3.75rem;
     border: 2px solid #0956C2;
     border-radius: 64px;
 
@@ -113,17 +113,17 @@
 }
 
 .socialIcon{
-    padding-left: 21px;
+    padding-left: 1.3125rem;
 }
 
 .socialLink{
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-style: Regular;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 100%;
 
-    padding-left: 15px;
+    padding-left: 0.9375rem;
 }
 
 

@@ -49,7 +49,9 @@ const AppRouter: React.FC = () => {
                 <Route
                   path="/my-courses"
                   element={
+                    <GuestRoute>
                     <MyCoursesPage/>
+                    </GuestRoute>
                   }
                 />
                 
