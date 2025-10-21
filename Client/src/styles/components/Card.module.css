@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 9c7b9bfb327eac80db312fd463d5ddae94cac709
 :root{
      --font-family: "Inter", sans-serif;
      --secondary-color: #0956C2;
@@ -59,4 +64,9 @@
     font-family: var(--font-family);
     font-size: 0/875rem;
     font-weight: 600;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 9f362be (fix(Course Card Component): Исправлен недочет с неккоректным контейниром карточки)
+>>>>>>> 9c7b9bfb327eac80db312fd463d5ddae94cac709

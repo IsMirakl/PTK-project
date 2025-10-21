@@ -5,9 +5,24 @@ import img from "../assets/image/2.jpg"
 export const CourseCard: React.FC<CourseCardProps> = ({title, tags, description}) => {
     return (
     <div className={styles.cardContainer}>
+<<<<<<< HEAD
       <div className={styles.imageContainer}>
         <img src={img} alt="" />
       </div>
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+      <div className={styles.imageContainer}>
+        <img src={img} alt="" />
+      </div>
+>>>>>>> 9f362be (fix(Course Card Component): Исправлен недочет с неккоректным контейниром карточки)
+=======
+      <div className={styles.imageContainer}>
+        <img src={img} alt="" />
+      </div>
+>>>>>>> 9f362be (fix(Course Card Component): Исправлен недочет с неккоректным контейниром карточки)
+>>>>>>> 9c7b9bfb327eac80db312fd463d5ddae94cac709
       <div className={styles.bodyCard}>
         <div className={styles.tagsWrapper}>
           {tags.map((tag, index) => (
