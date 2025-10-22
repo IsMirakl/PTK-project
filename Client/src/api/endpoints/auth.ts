@@ -3,25 +3,25 @@ import type { LoginData, RegisterData, VKAuthData, AuthResponse, User } from "..
 
 export const authAPI = {
     login: async (data: LoginData): Promise<AuthResponse> => {
-        const response = await api.post('/auth/login', data);
+        const response = await api.post('/v0/auth/login', data);
         localStorage.setItem('accessToken', response.data.accessTokend);
         return response.data;
     },
 
     register: async (data: RegisterData): Promise<AuthResponse> => {
-        const response = await api.post('/auth/register', data);
+        const response = await api.post('/v0/auth/register', data);
         localStorage.setItem('accessToken', response.data.accessToken);
         return response.data;
     },
 
     vkAuth: async (data: VKAuthData): Promise<AuthResponse> => {
-        const response = await api.post('/auth/vk', data);
+        const response = await api.post('/v0/auth/vk', data);
         localStorage.setItem('accessToken', response.data.accessToken);
         return response.data;
     },
 
     logout: async (): Promise<void> => {
-        await api.post('/auth/logout');
+        await api.post('/v0/auth/logout');
         localStorage.removeItem('accessToken');
     },
 
@@ -32,7 +32,7 @@ export const authAPI = {
     },
 
     getProfile: async (): Promise<User> => {
-        const response = await api.get('/auth/profile');
+        const response = await api.get('/v0/auth/profile');
         return response.data;
     }
 };
