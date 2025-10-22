@@ -1,8 +1,6 @@
 import type { CourseDTO, CreateCourseDTO } from "../../types/CouerseCard";
 import { api } from "../axiosConfig";
 
-
-
 export const courseCardApi = {
   getAllCourses: async (): Promise<CourseDTO[]> => {
     const response = await api.get('/v0/course');
@@ -42,7 +40,7 @@ export const courseCardApi = {
     const formData = new FormData();
     formData.append('file', file);
 
-    const response = await api.patch(`/v0/course/${id}`, formData, {
+    const response = await api.post(`/v0/course/${id}/preview`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
