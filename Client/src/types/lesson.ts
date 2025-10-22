@@ -10,7 +10,7 @@ export interface LessonDTO {
     beginAt: string;
     endsAt: string;
     state: LessonState;
-    courseID: string;
+    courseId: string;
 }
 
 export interface CreateLessonDTO {
