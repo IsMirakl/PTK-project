@@ -5,13 +5,14 @@ import {
   Navigate,
 } from "react-router-dom";
 
-import ProtectedRoute from '../Components/ProtectedRoute';
+import ProtectedRoute from './ProtectedRoute';
 import HomePage from '../Pages/HomePage';
 import AuthPage from "../Pages/AuthPage";
 import RegisterPage from "../Pages/RegisterPage";
 import ProfilePage from "../Pages/ProfilePage";
 import GuestRoute from "./GuestRoute";
 import MyCoursesPage from "../Pages/MyCoursesPage";
+import CreateCoursePage from "../Pages/CreateCoursePage";
 
 const AppRouter: React.FC = () => {
     return (
@@ -53,6 +54,14 @@ const AppRouter: React.FC = () => {
                     <MyCoursesPage/>
                     </GuestRoute>
                   }
+                />
+                
+                <Route path="/create-course"
+                element={
+                  <ProtectedRoute requiredRole={["Teacher", "admin"]}>
+                    <CreateCoursePage />
+                  </ProtectedRoute>
+                }
                 />
                 
                 <Route path="*" element={<Navigate to="/home" replace />} />
