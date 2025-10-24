@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from "react"
-import type { CourseCardProps } from "../types/CouerseCard"
+import type { CourseDTO  } from "../types/CouerseCard"
 import { courseCardApi } from '../api';
 
 export const useCourse = () => {
-    const [course, setCourse] = useState<CourseCardProps[]>([]);
+    const [course, setCourse] = useState<CourseDTO[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string| null>(null);
     
