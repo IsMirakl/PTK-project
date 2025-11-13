@@ -58,9 +58,9 @@ const AppRouter: React.FC = () => {
                 
                 <Route path="/create-course"
                 element={
-                  <ProtectedRoute requiredRole={["Teacher", "admin"]}>
+                  // <ProtectedRoute requiredRole={["Teacher", "admin"]}>
                     <CreateCoursePage />
-                  </ProtectedRoute>
+                  // {/* </ProtectedRoute> */}
                 }
                 />
                 
