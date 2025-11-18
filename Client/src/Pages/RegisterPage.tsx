@@ -5,7 +5,6 @@ import { useAuth } from '../hooks/useAuth';
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import style from "../styles/pages/RegisterPage.module.css";
-import Vk_icon from '../assets/icons/Vk_icon.svg';
 
 const RegisterPage: React.FC = () => {
     const [formData, setFormData] = useState({
@@ -50,10 +49,6 @@ const RegisterPage: React.FC = () => {
             navigate('/profile');
         }
     }, [register, navigate, formData]);
-
-    const handleVKAuth = useCallback(() => {
-        // Здесь будет логика VK авторизации
-    }, []);
 
     return (
         <>
@@ -130,17 +125,6 @@ const RegisterPage: React.FC = () => {
                             Есть учетная запись?
                         </p>
                         <Link to='/auth' className={style.loginLink}>Войти</Link>
-                    </div>
-                    
-                    <div className={style.divider}>
-                        <hr className={style.dividerLine} />
-                        <span className={style.dividerText}>ИЛИ</span>
-                        <hr className={style.dividerLine} />
-                    </div>
-                    
-                    <div className={style.socialRegister} onClick={handleVKAuth}>
-                        <img src={Vk_icon} alt="VK" className={style.socialIcon}/>
-                        <p className={style.socialLink}>Продолжить с VK | ID</p>
                     </div>
                 </form>
             </div>

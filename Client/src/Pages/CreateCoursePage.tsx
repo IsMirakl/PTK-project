@@ -17,7 +17,7 @@ const CreateCoursePage: React.FC = () => {
     const [participantsCount, setParticipantsCount] = useState(0);
     const [courseType, setCourseType] = useState<"private" | "public">("private");
 
-    const { createCourse, isLoading, error, isSuccess, reset } = useCreateCourse();
+    const { createCourse, isLoading } = useCreateCourse();
 
     const handleLoadPreview = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
@@ -84,12 +84,6 @@ const CreateCoursePage: React.FC = () => {
         setTags(tags.filter(tag => tag !== tagToRemove));
     };
 
-    const handleParticipantsInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = parseInt(e.target.value);
-        if (!isNaN(value) && value >= 0 && value <= 20) {
-            setParticipantsCount(value);
-        }
-    };
 
     const handleParticipantsSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setParticipantsCount(parseInt(e.target.value));
@@ -232,9 +226,9 @@ const CreateCoursePage: React.FC = () => {
                         </div>
                         
                     </div>
+            <button className={styles.publishCourse}>Опубликовать курс</button>
                 </form>
             </div>
-            <button className={styles.publishCourse}>Опубликовать курс</button>
         <Footer/>
         </>
     );
