@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from "react";
 import { authAPI } from "../api";
-import type { User, LoginData, RegisterData, VKAuthData } from "../types/user";
+import type { User, LoginData, RegisterData } from "../types/user";
 
 export const useAuth = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -66,22 +66,6 @@ export const useAuth = () => {
       setIsLoading(false);
     }
   };
-
-  const vkAuth = async (data: VKAuthData): Promise<boolean> => {
-    setIsLoading(true);
-    setError('');
-    try {
-      const response = await authAPI.vkAuth(data);
-      setUser(response.user);
-      return true;
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Ошибка VK авторизации');
-      return false;
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   const logout = async (): Promise<void> => {
     try {
       await authAPI.logout();
@@ -132,7 +116,6 @@ export const useAuth = () => {
     isInitialized,
     login,
     register,
-    vkAuth,
     logout,
     checkAuth,
     parseFullName

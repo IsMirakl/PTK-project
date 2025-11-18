@@ -6,7 +6,6 @@ export interface User {
   email: string;
   status: UserStatus;
   registrationDate: string;
-  vkId?: string;
 }
 
 export interface LoginData {
@@ -22,43 +21,7 @@ export interface RegisterData {
   password: string;
 }
 
-export interface VKAuthData {
-  code: string;
-  redirectUri: string;
-}
-
 export interface AuthResponse {
   user: User;
   accessToken: string;
-} 
-
-
-
-
-// export interface Post {
-//   id: number;
-//   title: string;
-//   author: User;
-//   group?: Group;
-//   media: Media;
-//   votesCount: number;
-//   comments: number;
-//   voted?: number;
-//   createdAt: string;
-//   updatedAt: string;
-// }
-
-// export interface Comment {
-//   id: number;
-//   comment: string;
-//   user: User;
-//   post: {
-//     id: number;
-//   }
-//   replies: Comment[],
-//   parent?: Comment
-//   votesCount?: number;
-//   voted?: number;
-//   createdAt: string;
-//   updatedAt: string
-// }
+}

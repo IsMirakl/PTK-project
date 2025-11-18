@@ -73,58 +73,6 @@
     color: #0956C2;
 }
 
-.divider {
-  display: flex;
-  align-items: center;
-  gap: 0.9375rem;
-  margin: 1.25rem 0;
-}
-
-.dividerLine {
-  flex: 1;
-  border: none;
-  border: 1px solid #00000066;
-  margin: 0;
-}
-
-.dividerText {
-  font-family: "Roboto", sans-serif;
-  font-style: Regular;
-  white-space: nowrap;
-  font-weight: 400;
-  font-size: 1rem;
-}
-
-.socialAuth{
-    width: 21.8125rem;
-    height: 3.75rem;
-    border: 2px solid #0956C2;
-    border-radius: 64px;
-
-    transition: transform 0.2s;
-
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-}
-
-.socialIcon{
-    padding-left: 1.3125rem;
-}
-
-.socialLink{
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-style: Regular;
-    font-size: 1rem;
-    line-height: 100%;
-
-    padding-left: 15px;
-}
-
-
-/* Animation */
-
 
 .buttonAuth:hover {
     background-color: #106ced;
@@ -133,8 +81,4 @@
 
 .buttonAuth:active {
     transform: translateY(1px);
-}
-
-.socialAuth:active {
-    transform: translateY(5px);
 }

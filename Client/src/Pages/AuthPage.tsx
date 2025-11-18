@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import Header from '../Components/Header.tsx';
 import Footer from '../Components/Footer.tsx';
 
-import Vk_icon from '../assets/icons/Vk_icon.svg';
 import style from '../styles/pages/AuthPage.module.css';
 import { useAuth } from '../hooks/useAuth.ts';
 
@@ -14,7 +13,6 @@ const AuthPage: React.FC = () => {
   const [showPasswordInput, setShowPasswordInput] = useState(false);
   const { login, isLoading, error } = useAuth();
   const navigate = useNavigate();
-  const { vkAuth } = useAuth();
 
   const handleEmailSubmit = useCallback((e: FormEvent) => {
     e.preventDefault();
@@ -40,15 +38,6 @@ const AuthPage: React.FC = () => {
       setPassword(e.target.value);
     }
   }, [showPasswordInput]);
-
-  const handleVKAuth = useCallback(async () => {
-    const code = 'ваш_code_от_vk';
-    const redirectUri = 'ваш_redirect_uri';
-    const success = await vkAuth({ code, redirectUri });
-    if (success) {
-      navigate('/profile');
-    }
-  }, [vkAuth, navigate]);
 
   const handleBackToEmail = useCallback(() => {
     setShowPasswordInput(false);
@@ -127,20 +116,6 @@ const AuthPage: React.FC = () => {
             )}
           </div>
 
-          {!showPasswordInput && (
-            <>
-              <div className={style.divider}>
-                <hr className={style.dividerLine} />
-                <span className={style.dividerText}>ИЛИ</span>
-                <hr className={style.dividerLine} />
-              </div>
-
-              <div className={style.socialAuth} onClick={handleVKAuth}>
-                <img src={Vk_icon} alt="VK Icon" className={style.socialIcon}/>
-                <p className={style.socialLink}>Продолжить с VK | ID</p>
-              </div>
-            </>
-          )}
         </form>
       </div>
       <Footer/>
