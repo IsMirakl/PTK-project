@@ -4,12 +4,11 @@ import styles from '../styles/pages/CreateCoursePage.module.css';
 import imageCourse from '../assets/image/image_course.svg';
 import { useCreateCourse } from "../hooks/useCreateCourse";
 import Footer from "../Components/Footer";
-
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const CreateCoursePage: React.FC = () => {
-    const [title, setTitle] = useState("");
+    const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [previewFile, setPreviewFile] = useState<File | null>(null);
     const [previewUrl, setPreviewUrl] = useState<string>('');
@@ -33,7 +32,7 @@ const CreateCoursePage: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         
-        if (!title.trim()) {
+        if (!name.trim()) {
             toast.error("Введите название курса");
             return;
         }
@@ -50,7 +49,7 @@ const CreateCoursePage: React.FC = () => {
 
         try {
             const courseData = {
-                name: title.trim(),
+                name: name.trim(),
                 description: description.trim(),
                 tags: tags,
                 ageAudience: ageAudience,
@@ -60,8 +59,7 @@ const CreateCoursePage: React.FC = () => {
 
             await createCourse(courseData, previewFile || undefined);
             
-
-            setTitle("");
+            setName("");
             setDescription("");
             setPreviewFile(null);
             setPreviewUrl("");
@@ -118,6 +116,7 @@ const CreateCoursePage: React.FC = () => {
                                         alt="Превью курса" 
                                         className={styles.previewImage}
                                     />
+                                   
                                 </label>
                                 <input
                                     type="file"
@@ -129,12 +128,12 @@ const CreateCoursePage: React.FC = () => {
                                 />
                             </div>
 
-                            <label htmlFor="titleCourse">Название курса</label>
+                            <label htmlFor="nameCourse">Название курса</label>
                             <input 
                                 type="text" 
-                                id="titleCourse" 
-                                value={title}
-                                onChange={(e) => setTitle(e.target.value)}
+                                id="nameCourse" 
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
                                 placeholder="Введите название курса"
                                 className={styles.titleInput}
                                 disabled={isLoading}
@@ -236,6 +235,7 @@ const CreateCoursePage: React.FC = () => {
                             </div>
                         </div>
                     </div>
+                    
                     <button 
                         type="submit" 
                         className={styles.publishCourse}
@@ -244,10 +244,12 @@ const CreateCoursePage: React.FC = () => {
                         {isLoading ? "Создание..." : "Опубликовать курс"}
                     </button>
                 </form>
+
+               
             </div>
 
             <ToastContainer
-                position="bottom-left"
+                position="top-right"
                 autoClose={5000}
                 hideProgressBar={false}
                 newestOnTop={false}

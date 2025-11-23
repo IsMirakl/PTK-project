@@ -6,20 +6,19 @@ import {
 } from "react-router-dom";
 
 import ProtectedRoute from './ProtectedRoute';
-import HomePage from '../Pages/HomePage';
 import AuthPage from "../Pages/AuthPage";
 import RegisterPage from "../Pages/RegisterPage";
 import ProfilePage from "../Pages/ProfilePage";
 import GuestRoute from "./GuestRoute";
-import MyCoursesPage from "../Pages/MyCoursesPage";
 import CreateCoursePage from "../Pages/CreateCoursePage";
+import CoursesPage from "../Pages/CoursesPage"
 
 const AppRouter: React.FC = () => {
     return (
         <Router>
             <Routes>
                 <Route path='/' element={<Navigate to="/home" replace />} />
-                <Route path='/home' element={<HomePage />} />     
+                <Route path='/home' element={<CoursesPage />} />     
                        <Route 
           path='/auth' 
           element={
@@ -47,14 +46,7 @@ const AppRouter: React.FC = () => {
                   }
                 />
 
-                <Route
-                  path="/my-courses"
-                  element={
-                    <GuestRoute>
-                    <MyCoursesPage/>
-                    </GuestRoute>
-                  }
-                />
+               
                 
                 <Route path="/create-course"
                 element={

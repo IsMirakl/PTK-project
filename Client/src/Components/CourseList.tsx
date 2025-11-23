@@ -1,6 +1,10 @@
+import { useCourse } from "../hooks/useCourse";
+import { CourseCard } from "./CourseCard";
+import styles from "../styles/components/CourseList.module.css";
+import { useState, useEffect } from "react";
 import type { CourseDTO } from "../types/CouerseCard";
 
-export const mockCourses: CourseDTO[] = [
+const mockCourses: CourseDTO[] = [
     {
         id: "1",
         name: "Введение в программирование",
@@ -69,14 +73,72 @@ export const mockCourses: CourseDTO[] = [
     }
 ];
 
-export const mockCourse: CourseDTO = {
-    id: "1",
-    name: "Тестовый курс",
-    description: "Это тестовое описание курса для проверки отображения карточки. Здесь может быть более подробная информация о том, что изучается в курсе, какие навыки получают студенты и какие проекты они реализуют.",
-    tags: ["тег1", "тестовый", "пример"],
-    previewUrl: "",
-    handle: "test-course",
-    ageAudience: "18+",
-    participantsCount: 5,
-    courseType: "public"
+export const CourseList: React.FC = () => {
+    const { course, loading, error } = useCourse();
+    const [useMockData, setUseMockData] = useState(false);
+
+    useEffect(() => {
+        if (!loading && course.length === 0) {
+            setUseMockData(true);
+        }
+    }, [course, loading]);
+
+
+    const displayCourses = useMockData ? mockCourses : course;
+    const displayLoading = useMockData ? false : loading;
+    const displayError = useMockData ? null : error;
+
+    if (displayLoading) {
+        return <div className={styles.loading}>Загрузка курсов...</div>;
+    }
+
+    if (displayError) {
+        return (
+            <div className={styles.error}>
+                <p>Ошибка загрузки курсов: {displayError}</p>
+                <p>Показаны тестовые данные:</p>
+                <div className={styles.courseList}>
+                    {mockCourses.map((courseItem) => (
+                        <CourseCard
+                            key={courseItem.id}
+                            {...courseItem}
+                        />
+                    ))}
+                </div>
+            </div>
+        );
+    }
+
+
+    return (
+        <div className={styles.courseList}>
+            {useMockData && (
+                <div className={styles.mockWarning}>
+                    ⚠️ Показаны тестовые данные
+                </div>
+            )}
+            {displayCourses.map((courseItem) => (
+                <CourseCard
+                    key={courseItem.id}
+                    {...courseItem}
+                />
+            ))}
+        </div>
+    );
+};
+
+export const MockCourseList: React.FC = () => {
+    return (
+        <div className={styles.courseList}>
+            <div className={styles.mockWarning}>
+                🔧 мок данные
+            </div>
+            {mockCourses.map((courseItem) => (
+                <CourseCard
+                    key={courseItem.id}
+                    {...courseItem}
+                />
+            ))}
+        </div>
+    );
 };

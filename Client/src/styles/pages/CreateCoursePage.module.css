@@ -288,7 +288,7 @@
     cursor: not-allowed;
 }
 
-/* Медиа-запросы */
+
 @media (max-width: 1200px) {
     .container {
         padding: 0 1.5rem;

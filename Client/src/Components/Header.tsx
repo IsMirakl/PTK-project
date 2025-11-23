@@ -1,6 +1,5 @@
-// Обновленный компонент Header
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { use, useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 
 import styles from "../styles/components/Header.module.css";
 import Logotype from '../assets/logo/Logotype.svg';
@@ -97,7 +96,7 @@ const Header: React.FC = () => {
                         )}
                     </div>
 
-                    {/* Кнопка бургер-меню */}
+
                     <button 
                         className={`${styles.burgerButton} ${isMobileMenuOpen ? styles.active : ''}`}
                         onClick={toggleMobileMenu}
@@ -109,7 +108,7 @@ const Header: React.FC = () => {
                     </button>
                 </div>
 
-                {/* Мобильное меню */}
+
                 <div className={`${styles.mobileMenu} ${isMobileMenuOpen ? styles.active : ''}`}>
                     <ul className={styles.mobileNavList}>
                         {NAV_ITEMS.map((item) => (
