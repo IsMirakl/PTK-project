@@ -56,7 +56,6 @@ const RegisterPage: React.FC = () => {
             <div className={style.container}>
                 <form onSubmit={handleSubmit} className={style.formRegister}>
                     <legend className={style.legendRegister}>Регистрация</legend>
-                    
                     <input 
                         type="text" 
                         name="firstName"
@@ -101,6 +100,7 @@ const RegisterPage: React.FC = () => {
                         placeholder="Пароль" 
                         className={style.inputRegister}
                         value={formData.password}
+                        
                         onChange={handleInputChange}
                         required
                         minLength={6}

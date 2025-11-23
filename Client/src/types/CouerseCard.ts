@@ -5,10 +5,16 @@ export interface CourseDTO {
     description: string;
     previewUrl: string;
     handle: string;
+    ageAudience?: string;
+    participantsCount?: number;
+    courseType?: "private" | "public";
 }
 
 export interface CreateCourseDTO {
     name: string;
     description: string;
     tags: string[];
+    ageAudience?: string;
+    participantsCount?: number;
+    courseType?: "private" | "public";
 }

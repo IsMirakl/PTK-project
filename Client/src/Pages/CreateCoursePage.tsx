@@ -3,8 +3,10 @@ import Header from "../Components/Header";
 import styles from '../styles/pages/CreateCoursePage.module.css';
 import imageCourse from '../assets/image/image_course.svg';
 import { useCreateCourse } from "../hooks/useCreateCourse";
-
 import Footer from "../Components/Footer";
+
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CreateCoursePage: React.FC = () => {
     const [title, setTitle] = useState("");
@@ -13,7 +15,7 @@ const CreateCoursePage: React.FC = () => {
     const [previewUrl, setPreviewUrl] = useState<string>('');
     const [tagInput, setTagInput] = useState("");
     const [tags, setTags] = useState<string[]>([]);
-    const [ageAudience, setAgeageAudience] = useState("");
+    const [ageAudience, setAgeAudience] = useState("");
     const [participantsCount, setParticipantsCount] = useState(0);
     const [courseType, setCourseType] = useState<"private" | "public">("private");
 
@@ -23,7 +25,6 @@ const CreateCoursePage: React.FC = () => {
         const file = event.target.files?.[0];
         if (file) {
             setPreviewFile(file);
-            
             const url = URL.createObjectURL(file);
             setPreviewUrl(url);
         }
@@ -33,20 +34,25 @@ const CreateCoursePage: React.FC = () => {
         e.preventDefault();
         
         if (!title.trim()) {
-            alert("Введите название курса");
+            toast.error("Введите название курса");
             return;
         }
 
         if (!description.trim()) {
-            alert("Введите описание курса");
+            toast.error("Введите описание курса");
+            return;
+        }
+
+        if (description.trim().length < 10) {
+            toast.error("Описание должно содержать минимум 10 символов");
             return;
         }
 
         try {
             const courseData = {
-                title: title.trim(),
+                name: title.trim(),
                 description: description.trim(),
-                tags: tags.join(" "),
+                tags: tags,
                 ageAudience: ageAudience,
                 participantsCount: participantsCount,
                 courseType: courseType
@@ -54,18 +60,22 @@ const CreateCoursePage: React.FC = () => {
 
             await createCourse(courseData, previewFile || undefined);
             
+
             setTitle("");
             setDescription("");
             setPreviewFile(null);
             setPreviewUrl("");
             setTagInput("");
             setTags([]);
-            setAgeageAudience("");
+            setAgeAudience("");
             setParticipantsCount(0);
             setCourseType("private");
+
+            toast.success("Курс успешно создан!");
             
         } catch (err) {
             console.error("Ошибка создания курса:", err);
+            toast.error("Произошла ошибка при создании курса");
         }
     };
 
@@ -83,7 +93,6 @@ const CreateCoursePage: React.FC = () => {
     const handleRemoveTag = (tagToRemove: string) => {
         setTags(tags.filter(tag => tag !== tagToRemove));
     };
-
 
     const handleParticipantsSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setParticipantsCount(parseInt(e.target.value));
@@ -116,6 +125,7 @@ const CreateCoursePage: React.FC = () => {
                                     accept="image/*"
                                     onChange={handleLoadPreview}
                                     className={styles.fileInput}
+                                    disabled={isLoading}
                                 />
                             </div>
 
@@ -131,66 +141,65 @@ const CreateCoursePage: React.FC = () => {
                             />
 
                             <label htmlFor="descriptionCourse">Описание курса</label>
-                            <input 
-                                type="text" 
+                            <textarea 
                                 id="descriptionCourse" 
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
                                 placeholder="Введите описание курса"
                                 className={styles.descriptionInput}
                                 disabled={isLoading}
+                                rows={4}
                             />
-
-                        
                         </div>
                     </div>
                     
                     <div className={styles.visitorsInfo}>
                         <div className={styles.inputsFields}>
-                        <p>Информация для посетителей</p>
+                            <p>Информация для посетителей</p>
 
-                        <label htmlFor="tagsCourse">Теги курса</label>
-                        <div className={styles.tagsContainer}>
-                            <div className={styles.tagsList}>
-                                {tags.map((tag, index) => (
-                                    <span key={index} className={styles.tag}>
-                                        {tag}
-                                        <button 
-                                            type="button"
-                                            onClick={() => handleRemoveTag(tag)}
-                                            className={styles.tagRemove}
-                                        >
-                                            ×
-                                        </button>
-                                    </span>
-                                ))}
+                            <label htmlFor="tagsCourse">Теги курса</label>
+                            <div className={styles.tagsContainer}>
+                                <div className={styles.tagsList}>
+                                    {tags.map((tag, index) => (
+                                        <span key={index} className={styles.tag}>
+                                            {tag}
+                                            <button 
+                                                type="button"
+                                                onClick={() => handleRemoveTag(tag)}
+                                                className={styles.tagRemove}
+                                                disabled={isLoading}
+                                            >
+                                                ×
+                                            </button>
+                                        </span>
+                                    ))}
+                                </div>
+                                <input 
+                                    type="text" 
+                                    id="tagsCourse" 
+                                    value={tagInput}
+                                    onChange={(e) => setTagInput(e.target.value)}
+                                    onKeyDown={handleTagInputKeyDown}
+                                    placeholder="Введите тег и нажмите Enter"
+                                    className={styles.titleInput}
+                                    disabled={isLoading}
+                                />
                             </div>
+
+                            <label htmlFor="categoryCourse">Возрастная категория</label>
                             <input 
                                 type="text" 
-                                id="tagsCourse" 
-                                value={tagInput}
-                                onChange={(e) => setTagInput(e.target.value)}
-                                onKeyDown={handleTagInputKeyDown}
-                                placeholder="Введите тег и нажмите Enter"
+                                id="categoryCourse" 
+                                value={ageAudience}
+                                onChange={(e) => setAgeAudience(e.target.value)}
+                                placeholder="Выберите возрастную категорию"
                                 className={styles.titleInput}
                                 disabled={isLoading}
                             />
                         </div>
-
-                        <label htmlFor="categoryCourse">Возрастная категория</label>
-                        <input 
-                            type="text" 
-                            id="categoryCourse" 
-                            value={ageAudience}
-                            onChange={(e) => setAgeageAudience(e.target.value)}
-                            placeholder="Выберите возрастную категорию"
-                            className={styles.titleInput}
-                            disabled={isLoading}
-                        />
-                                                </div>
                         <div className={styles.participantsSection}>
                             <div className={styles.participantsControl}>    
-                            <label htmlFor="countUsers">Количество участников</label>
+                                <label htmlFor="countUsers">Количество участников</label>
                                 <span className={styles.participantsValue}>{participantsCount}</span>
                             </div>
                             <input 
@@ -212,6 +221,7 @@ const CreateCoursePage: React.FC = () => {
                                     type="button"
                                     className={`${styles.typeButton} ${courseType === 'private' ? styles.typeButtonActive : ''}`}
                                     onClick={() => handleCourseTypeChange('private')}
+                                    disabled={isLoading}
                                 >
                                     Приватный
                                 </button>
@@ -219,17 +229,37 @@ const CreateCoursePage: React.FC = () => {
                                     type="button"
                                     className={`${styles.typeButton} ${courseType === 'public' ? styles.typeButtonActive : ''}`}
                                     onClick={() => handleCourseTypeChange('public')}
+                                    disabled={isLoading}
                                 >
                                     Публичный
                                 </button>
                             </div>
                         </div>
-                        
                     </div>
-            <button className={styles.publishCourse}>Опубликовать курс</button>
+                    <button 
+                        type="submit" 
+                        className={styles.publishCourse}
+                        disabled={isLoading}
+                    >
+                        {isLoading ? "Создание..." : "Опубликовать курс"}
+                    </button>
                 </form>
             </div>
-        <Footer/>
+
+            <ToastContainer
+                position="bottom-left"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
+            
+            <Footer/>
         </>
     );
 };

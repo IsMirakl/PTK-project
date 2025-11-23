@@ -1,4 +1,4 @@
-import { CourseCard } from "../Components/CourseCard";
+// import { CourseCard } from "../Components/CourseCard";
 import Header from "../Components/Header";
 import { useAuth } from "../hooks/useAuth";
 import { mockCourses } from "../mockData/courseCard";
