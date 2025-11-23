@@ -112,11 +112,6 @@ export const CourseList: React.FC = () => {
 
     return (
         <div className={styles.courseList}>
-            {useMockData && (
-                <div className={styles.mockWarning}>
-                    ⚠️ Показаны тестовые данные
-                </div>
-            )}
             {displayCourses.map((courseItem) => (
                 <CourseCard
                     key={courseItem.id}

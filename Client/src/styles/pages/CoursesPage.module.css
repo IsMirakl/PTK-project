@@ -1,0 +1,83 @@
+:root {
+    --font-family: "Inter", sans-serif;
+}
+
+.coursesFilter {
+    display: flex;
+    margin: 1.75rem 0 3.3rem 6.6rem;
+    gap: 1rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-right: 1rem;
+    padding: 0.3rem;
+}
+
+.filterButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 12px;
+    width: auto;
+    height: 43px;
+    background-color: #00000012;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    border-radius: 32px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filterButton:hover {
+    background: #0956C2;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.filterButton:active {
+    transform: translateY(0);
+}
+
+.filterButtonActive {
+    background: #0956C2;
+    color: white;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 1024px) {
+    .coursesFilter {
+        margin: 1.75rem 2rem 3.3rem 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .coursesFilter {
+        margin: 1.75rem 1.5rem 3.3rem 1.5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .coursesFilter {
+        margin: 1.75rem 1rem 3.3rem 1rem;
+        gap: 0.75rem;
+    }
+    
+    .filterButton {
+        padding: 18px 10px;
+        height: 40px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .coursesFilter {
+        margin: 1.75rem 0.75rem 3.3rem 0.75rem;
+        gap: 0.5rem;
+    }
+    
+    .filterButton {
+        padding: 16px 8px;
+        height: 38px;
+        font-size: 14px;
+    }
+}

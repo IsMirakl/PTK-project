@@ -55,18 +55,6 @@
     background: #218838;
 }
 
-.mockWarning {
-    grid-column: 1 / -1;
-    background: #fff3cd;
-    border: 1px solid #ffeaa7;
-    color: #856404;
-    padding: 1rem;
-    border-radius: 8px;
-    text-align: center;
-    font-family: var(--font-family);
-    font-weight: 500;
-    margin-bottom: 1rem;
-}
 
 .cardContainer {
     background: #ffffff;
