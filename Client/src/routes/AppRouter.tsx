@@ -12,6 +12,7 @@ import ProfilePage from "../Pages/ProfilePage";
 import GuestRoute from "./GuestRoute";
 import CreateCoursePage from "../Pages/CreateCoursePage";
 import CoursesPage from "../Pages/CoursesPage"
+import CourseDetailsPage from "../Pages/CourseDetailsPage";
 
 const AppRouter: React.FC = () => {
     return (
@@ -55,6 +56,8 @@ const AppRouter: React.FC = () => {
                   // {/* </ProtectedRoute> */}
                 }
                 />
+
+                <Route path="/course/:id" element={<CourseDetailsPage />} />
                 
                 <Route path="*" element={<Navigate to="/home" replace />} />
             </Routes>
