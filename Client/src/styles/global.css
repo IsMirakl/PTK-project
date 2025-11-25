@@ -31,3 +31,14 @@ img{
 body{
     background-color: #EDF1F8;
 }
+
+
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    flex: 1;
+}

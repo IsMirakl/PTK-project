@@ -12,9 +12,9 @@ function App() {
     checkAuth();
   }, []);
   return (
-    <>
+    <div className="app">
     <AppRouter />
-    </>
+    </div>
   )
 }
 

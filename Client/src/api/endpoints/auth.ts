@@ -1,5 +1,5 @@
 import { api } from "../axiosConfig";
-import type { LoginData, RegisterData, VKAuthData, AuthResponse, User } from "../../types/user";
+import type { LoginData, RegisterData, AuthResponse, User } from "../../types/user";
 
 export const authAPI = {
     login: async (data: LoginData): Promise<AuthResponse> => {
@@ -13,13 +13,6 @@ export const authAPI = {
         localStorage.setItem('accessToken', response.data.accessToken);
         return response.data;
     },
-
-    vkAuth: async (data: VKAuthData): Promise<AuthResponse> => {
-        const response = await api.post('/v0/auth/vk', data);
-        localStorage.setItem('accessToken', response.data.accessToken);
-        return response.data;
-    },
-
     logout: async (): Promise<void> => {
         await api.post('/v0/auth/logout');
         localStorage.removeItem('accessToken');

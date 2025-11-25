@@ -93,6 +93,9 @@
 }
 
 .cardButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 8.4375rem;
     height: 3.0625rem;
     background-color: var(--secondary-color);

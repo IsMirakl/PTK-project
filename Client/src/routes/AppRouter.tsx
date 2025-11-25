@@ -5,7 +5,7 @@ import {
   Navigate,
 } from "react-router-dom";
 
-import ProtectedRoute from './ProtectedRoute';
+// import ProtectedRoute from './ProtectedRoute';
 import AuthPage from "../Pages/AuthPage";
 import RegisterPage from "../Pages/RegisterPage";
 import ProfilePage from "../Pages/ProfilePage";
@@ -41,9 +41,9 @@ const AppRouter: React.FC = () => {
                 <Route
                   path="/profile"
                   element={
-                    <ProtectedRoute>
+                    // <ProtectedRoute>
                       <ProfilePage />
-                    </ProtectedRoute>
+                    // </ProtectedRoute>
                   }
                 />
 

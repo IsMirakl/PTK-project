@@ -1,8 +1,10 @@
 import styles from "../styles/components/Card.module.css";
 import type { CourseDTO } from "../types/CouerseCard";
 import defaultImg from "../assets/image/2.jpg";
+import { Link } from "react-router-dom";
 
 export const CourseCard: React.FC<CourseDTO> = ({ 
+    id,
     name, 
     tags, 
     description, 
@@ -31,7 +33,9 @@ export const CourseCard: React.FC<CourseDTO> = ({
             </div>
             
             <div className={styles.buttonContainer}>
-                <button className={styles.cardButton}>Записаться</button>
+                <Link to={`/course/${id}`} className={styles.cardButton}>
+    Записаться
+</Link>
             </div>
         </div>
     );
