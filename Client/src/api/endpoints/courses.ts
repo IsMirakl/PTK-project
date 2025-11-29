@@ -1,4 +1,4 @@
-import type { CourseDTO, CreateCourseDTO } from "../../types/CouerseCard";
+import type { CourseDTO, CreateCourseDTO } from "../../types/CourseCard";
 import { api } from "../axiosConfig";
 
 export const courseCardApi = {
