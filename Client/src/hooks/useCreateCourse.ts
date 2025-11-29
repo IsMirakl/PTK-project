@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { courseCardApi } from "../api";
-import type { CreateCourseDTO, CourseDTO } from "../types/CouerseCard";
+import type { CreateCourseDTO, CourseDTO } from "../types/CourseCard";
 
 
 

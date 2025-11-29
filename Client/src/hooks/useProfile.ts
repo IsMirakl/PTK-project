@@ -1,7 +1,9 @@
 import { useState, useCallback } from "react";
-import {profileApi} from "../api/endpoints/profile";
+// import {profileApi} from "../api/endpoints/profile";
 import type { ProfileResponseDTO, ProfileUpdateDTO } from "../types/profile";
 
+import { mockProfileApi } from '../api/mockApi/mockProfileApi';
+// import { profileApi } from '../api/profile';
 
 export const useProfile = () => {
     const [profile, setProfile] = useState<ProfileResponseDTO | null>()
@@ -13,7 +15,7 @@ export const useProfile = () => {
         setError(null);
 
         try {
-            const data = await profileApi.getMyProfile();
+            const data = await mockProfileApi.getMyProfile();
             setProfile(data);
         } catch (err) {
             const message = err instanceof Error ? err.message : "Ошибка загрузки профиля";
@@ -29,7 +31,7 @@ export const useProfile = () => {
         setError(null);
 
         try {
-            const data = await profileApi.getProfileByHandle(handle);
+            const data = await mockProfileApi.getProfileByHandle(handle);
             setProfile(data);
         } catch (err) {
             const message = err instanceof Error ? err.message : "Ошибка загрузки профиля";
@@ -45,7 +47,7 @@ export const useProfile = () => {
         setError(null);
 
         try {
-            const data = await profileApi.updateAvatar(file);
+            const data = await mockProfileApi.updateAvatar(file);
             setProfile(data);
         } catch (err) {
             const message = err instanceof Error ? err.message : "Ошибка обновления аватарки";
@@ -62,7 +64,7 @@ export const useProfile = () => {
         setError(null);
 
         try {
-            const updateProfile = await profileApi.updateProfile(data);
+            const updateProfile = await mockProfileApi.updateProfile(data);
             setProfile(prev => prev ? {...prev, ...updateProfile} : null);
             return updateProfile;
         } catch (err) {

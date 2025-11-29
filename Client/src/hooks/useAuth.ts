@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { authAPI } from "../api";
 import type { User, LoginData, RegisterData } from "../types/user";
 
+
 export const useAuth = () => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(false);
