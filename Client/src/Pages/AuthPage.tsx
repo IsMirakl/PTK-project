@@ -111,7 +111,11 @@ const AuthPage: React.FC = () => {
           )}
 
           <div className={style.buttonContainer}>
-            <AuthButton type="submit" className={style.buttonAuth}>
+            <AuthButton
+              type="submit"
+              className={style.buttonAuth}
+              disabled={isLoading}
+            >
               {showPasswordInput ? 'Войти' : 'Продолжить'}
             </AuthButton>
 

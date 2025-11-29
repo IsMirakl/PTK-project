@@ -1,3 +1,8 @@
+:root {
+    --font-family-monts: "Montserrat", sans-serif;
+    --font-family-inter: "Inter", sans-serif;
+}
+
 .header {
     display: flex;
     align-items: center;
@@ -26,7 +31,7 @@
     gap: 3.125rem;
     margin: 0;
 
-    font-family: "Inter", sans-serif;
+    font-family:var(--font-family-monts);
     font-weight: 500;
     font-style: Medium;
     font-size: 1rem;
@@ -54,7 +59,7 @@
     width: 5.624rem;
     height: 2.6875rem;
 
-    font-family: "Inter", sans-serif;
+    font-family: var(--font-family-inter);
     font-weight: 600;
     font-size: 0.875rem;
     color: white;
@@ -70,6 +75,33 @@
     display: flex;
     align-items: center;
     gap: 0.9375rem;
+}
+
+.profileLink{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.userInfo img{
+    width: 43px;
+    height: 43px;
+    border-radius: 100%;
+    display: flex;
+}
+
+.userName {
+    font-family: var(--font-family-monts);
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.handleName{
+    font-family: var(--font-family-monts);
+    font-weight: 500;
+    font-size: 12px;
+    color: #888888;
+    
 }
 
 .burgerButton {

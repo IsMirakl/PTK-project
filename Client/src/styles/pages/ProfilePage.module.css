@@ -1,0 +1,468 @@
+:root {
+  --font-family-monts: 'Montserrat', sans-serif;
+  --font-family-inter: 'Inter', sans-serif;
+  --primary-color: #0956c2;
+  --border-radius: 20px;
+  --card-width: 77.75rem;
+  --card-height: 10.438rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.profileCard {
+  margin-top: 3.6rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.profileHeader {
+  width: 100%;
+  max-width: var(--card-width);
+  min-height: var(--card-height);
+  background-color: var(--primary-color);
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  gap: 1.5rem;
+}
+
+.profileAvatar {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 100%;
+  border: 5px solid #ffffff;
+  flex-shrink: 0;
+}
+
+.profileInfo {
+  width: 100%;
+  max-width: var(--card-width);
+  min-height: var(--card-height);
+  background-color: white;
+  border-bottom-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+}
+
+.profileText {
+  color: white;
+}
+
+.profileName {
+  font-family: var(--font-family-monts);
+  font-weight: 600;
+  font-size: 1.125rem;
+  margin: 0 0 0.75rem 0;
+}
+
+.profileCourseGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.profileStatus {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 8.3rem;
+  height: 2rem;
+  padding: 0 0.75rem;
+  border-radius: 50px;
+  border: 1px solid #a2a2a2;
+  font-family: var(--font-family-monts);
+  font-weight: 700;
+  font-size: 0.938rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.profileStatus > img {
+  width: 1rem;
+  height: 0.9rem;
+}
+
+.profileCourse,
+.profileNumberGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 5rem;
+  height: 2.1rem;
+  padding: 0 1rem;
+  border-radius: 50px;
+  border: 1px solid #a2a2a2;
+  font-family: var(--font-family-monts);
+  font-weight: 700;
+  font-size: 0.938rem;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.profileCourseGroup > *:hover,
+.profileStatus:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+.profileEdit {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.profileEdit > button {
+  width: 10.25rem;
+  height: 3rem;
+  border-radius: 1000px;
+  background-color: #ffffff;
+  cursor: pointer;
+  font-family: var(--font-family-monts);
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--primary-color);
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.profileEdit > button:hover {
+  background-color: #f0f0f0;
+}
+
+.profileInfoTitle {
+  font-family: var(--font-family-monts);
+  font-weight: 500;
+  font-size: 0.938rem;
+  margin: 1.5rem 0 1rem 1.5rem;
+}
+
+hr {
+  width: 100%;
+  max-width: var(--card-width);
+  opacity: 0.1;
+  border: 1px solid #000000;
+  margin: 0;
+}
+
+.profileContacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0 1.5rem 1.5rem;
+}
+
+.profileEmail,
+.profilePhone {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 0;
+}
+
+.emailTextWrapper,
+.phoneTextWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.emailTextWrapper p:first-child,
+.phoneTextWrapper p:first-child {
+  font-family: var(--font-family-monts);
+  font-weight: 500;
+  font-size: 0.938rem;
+  color: #888888;
+  margin: 0;
+}
+
+.emailTextWrapper p:last-child,
+.phoneTextWrapper p:last-child {
+  font-family: var(--font-family-monts);
+  font-weight: 400;
+  font-size: 0.938rem;
+  margin: 0;
+}
+
+.profileContactsIcon {
+  width: 2.188rem;
+  height: 2.188rem;
+  background-color: var(--primary-color);
+  border-radius: 0.625rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.profileContactsIcon img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.coursesAttendTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2.375rem;
+}
+
+.courseAttendIcon {
+  width: 2.438rem;
+  height: 2.438rem;
+  border-radius: 100%;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.courseAttendIcon img {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.coursesAttendTitle h3 {
+  font-family: var(--font-family-monts);
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: #000;
+  margin: 0;
+}
+
+.profileMyCourse {
+  margin-top: 3rem;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    max-width: 100%;
+    padding: 0 2rem;
+  }
+
+  .profileHeader {
+    max-width: 100%;
+    padding: 1.5rem 2rem;
+    gap: 1.25rem;
+  }
+
+  .profileInfo {
+    max-width: 100%;
+  }
+
+  .profileAvatar {
+    width: 6rem;
+    height: 6rem;
+    border: 4px solid #ffffff;
+  }
+
+  .profileName {
+    font-size: 1.25rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .profileStatus {
+    height: 1.875rem;
+    font-size: 0.875rem;
+  }
+
+  .profileCourse,
+  .profileNumberGroup {
+    min-width: 4.5rem;
+    height: 2rem;
+    font-size: 0.875rem;
+    padding: 0 0.875rem;
+  }
+
+  .profileEdit > button {
+    width: 9rem;
+    height: 2.75rem;
+    font-size: 0.813rem;
+  }
+
+  .profileInfoTitle {
+    margin: 1.25rem 0 0.875rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  hr {
+    max-width: 100%;
+  }
+
+  .profileContacts {
+    padding: 0 1.25rem 1.25rem;
+    gap: 0.875rem;
+  }
+
+  .profileEmail,
+  .profilePhone {
+    padding: 0.875rem 0;
+    gap: 0.625rem;
+  }
+
+  .emailTextWrapper p:first-child,
+  .phoneTextWrapper p:first-child,
+  .emailTextWrapper p:last-child,
+  .phoneTextWrapper p:last-child {
+    font-size: 0.875rem;
+  }
+
+  .profileContactsIcon {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .profileContactsIcon img {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .coursesAttendTitle {
+    margin-top: 2rem;
+    gap: 0.625rem;
+  }
+
+  .courseAttendIcon {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .courseAttendIcon img {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+
+  .coursesAttendTitle h3 {
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 900px) and (min-width: 769px) {
+  .profileHeader {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .profileCourseGroup {
+    gap: 0.5rem;
+  }
+
+  .profileEdit > button {
+    width: 8rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 1200px) and (min-width: 1025px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .profileHeader {
+    padding: 1.5rem 2.5rem;
+  }
+
+  .profileContacts {
+    padding: 0 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .profileHeader {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    gap: 1rem;
+    min-height: auto;
+  }
+
+  .profileEdit {
+    margin-left: 0;
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .profileEdit > button {
+    width: 100%;
+    max-width: 16rem;
+  }
+
+  .profileCourseGroup {
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .profileContacts {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0 1rem 1rem;
+  }
+
+  .coursesAttendTitle {
+    margin-top: 1.5rem;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .profileCard {
+    margin-top: 1.5rem;
+  }
+
+  .profileHeader {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .profileAvatar {
+    width: 5rem;
+    height: 5rem;
+    border: 3px solid #ffffff;
+  }
+
+  .profileName {
+    font-size: 1.125rem;
+  }
+
+  .profileStatus,
+  .profileCourse,
+  .profileNumberGroup {
+    font-size: 0.75rem;
+    height: 1.75rem;
+  }
+
+  .profileCourse,
+  .profileNumberGroup {
+    min-width: 4rem;
+    padding: 0 0.5rem;
+  }
+
+  .coursesAttendTitle h3 {
+    font-size: 1rem;
+  }
+
+  .courseAttendIcon {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .courseAttendIcon img {
+    width: 1rem;
+    height: 1rem;
+  }
+}

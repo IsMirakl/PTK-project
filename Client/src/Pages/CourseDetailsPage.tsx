@@ -4,7 +4,7 @@ import Footer from "../Components/Footer";
 import styles from '../styles/pages/CourseDetailsPage.module.css';
 import { useCourse } from "../hooks/useCourse";
 import { useState, useEffect } from "react";
-import type { CourseDTO } from "../types/CouerseCard";
+import type { CourseDTO } from "../types/CourseCard";
 
 const CourseDetailsPage: React.FC = () => {
     const { id } = useParams<{ id: string }>();

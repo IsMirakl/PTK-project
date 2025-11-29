@@ -8,7 +8,7 @@ import {
 // import ProtectedRoute from './ProtectedRoute';
 import AuthPage from "../Pages/AuthPage";
 import RegisterPage from "../Pages/RegisterPage";
-import ProfilePage from "../Pages/ProfilePage";
+import {ProfilePage} from "../Pages/ProfilePage";
 import GuestRoute from "./GuestRoute";
 import CreateCoursePage from "../Pages/CreateCoursePage";
 import CoursesPage from "../Pages/CoursesPage"
@@ -46,6 +46,8 @@ const AppRouter: React.FC = () => {
                     // </ProtectedRoute>
                   }
                 />
+
+                <Route path="/profile/:handle" element={<ProfilePage />} />
 
                
                 
