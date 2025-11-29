@@ -1,5 +1,5 @@
 import styles from "../styles/components/Card.module.css";
-import type { CourseDTO } from "../types/CouerseCard";
+import type { CourseDTO } from "../types/CourseCard";
 import defaultImg from "../assets/image/2.jpg";
 import { Link } from "react-router-dom";
 

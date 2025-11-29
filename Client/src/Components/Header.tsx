@@ -1,9 +1,13 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useCallback, useState } from "react";
 
+import { formatShortName } from "../utils/formatName";
+
 import styles from "../styles/components/Header.module.css";
 import Logotype from '../assets/logo/Logotype.svg';
+import Profile from "../assets/icons/profile.svg";
 import { useAuth } from "../hooks/useAuth";
+
 
 const ROUTES = {
     HOME: '/',
@@ -32,8 +36,11 @@ const Header: React.FC = () => {
     const isAuthPage = location.pathname === '/auth';
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+    
+    
     const { user, logout } = useAuth();
     const isAuthenticated = !!user;
+    const displayName = user ? formatShortName(user.fullName) : '';
 
     const handleLogout = useCallback(async () => {
         await logout();
@@ -80,7 +87,27 @@ const Header: React.FC = () => {
                     </nav>
                     
                     <div className={styles.authSection}>
-                        {isAuthenticated ? (
+                                <div className={styles.profileSection}>
+                                <Link to={ROUTES.PROFILE} className={styles.profileLink}>
+                                    <div className={styles.userInfo}>
+                                            <img 
+                                                src={user?.avatarUrl || Logotype} 
+                                                className={styles.userAvatar}
+                                            />
+                                    </div>
+                                    <div>
+                                        <p className={styles.userName}>
+                                            {displayName || "Иванов И.И"}
+                                        </p>
+                                        <p className={styles.handleName}>
+                                            {user?.handle || "test"}
+                                        </p>
+                                    </div>
+                                    <img src={Profile} alt="" />
+                                </Link>
+                            </div>
+
+                        {/* {isAuthenticated ? (
                             <div className={styles.profileSection}>
                                 <Link to={ROUTES.PROFILE}>
                                     Профиль
@@ -93,7 +120,7 @@ const Header: React.FC = () => {
                             !isAuthPage && (
                                 <Link to='/auth' className={styles.loginButton}>Войти</Link>
                             )
-                        )}
+                        )} */}
                     </div>
 
 
