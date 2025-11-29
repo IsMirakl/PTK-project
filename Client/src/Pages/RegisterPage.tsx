@@ -1,136 +1,142 @@
-import { Link, useNavigate } from 'react-router-dom';
 import { useCallback, useState, type FormEvent } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 
-import Header from "../Components/Header";
-import Footer from "../Components/Footer";
-import style from "../styles/pages/RegisterPage.module.css";
+import Footer from '../Components/Footer';
+import { AuthButton } from '../Components/forms/AuthButton';
+import { AuthInput } from '../Components/forms/AuthForm';
+import Header from '../Components/Header';
+import style from '../styles/pages/RegisterPage.module.css';
 
 const RegisterPage: React.FC = () => {
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        middleName: '',
-        email: '',
-        password: ''
-    });
-    
-    const { register, isLoading, error } = useAuth();
-    const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    middleName: '',
+    email: '',
+    password: '',
+  });
 
-    const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-    }, []);
+  const { register, isLoading, error } = useAuth();
+  const navigate = useNavigate();
 
-    const handleSubmit = useCallback(async (e: FormEvent) => {
-        e.preventDefault();
-        
-        if (!formData.firstName || !formData.lastName || !formData.email || !formData.password) {
-            alert('Все поля обязательны для заполнения');
-            return;
-        }
-        
-        if (formData.password.length < 8) {
-            alert('Пароль должен содержать минимум 6 символов');
-            return;
-        }
-        
-        if (!formData.email.includes('@')) {
-            alert('Введите корректный email адрес');
-            return;
-        }
+  const handleInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = e.target;
+      setFormData(prev => ({
+        ...prev,
+        [name]: value,
+      }));
+    },
+    []
+  );
 
-        const success = await register(formData);
-        if (success) {
-            navigate('/profile');
-        }
-    }, [register, navigate, formData]);
+  const handleSubmit = useCallback(
+    async (e: FormEvent) => {
+      e.preventDefault();
 
-    return (
-        <>
-            <Header />
-            <div className={style.container}>
-                <form onSubmit={handleSubmit} className={style.formRegister}>
-                    <legend className={style.legendRegister}>Регистрация</legend>
-                    <input 
-                        type="text" 
-                        name="firstName"
-                        placeholder="Имя" 
-                        className={style.inputRegister}
-                        value={formData.firstName}
-                        onChange={handleInputChange}
-                        required
-                    />
-                      <input 
-                        type="text" 
-                        name="lastName"
-                        placeholder="Фамилия" 
-                        className={style.inputRegister}
-                        value={formData.lastName}
-                        onChange={handleInputChange}
-                        required
-                    />
-                    <input 
-                        type="text" 
-                        name="middleName"
-                        placeholder="Отчество" 
-                        className={style.inputRegister}
-                        value={formData.middleName}
-                        onChange={handleInputChange}
-                        required
-                    />
-                    
-                    <input 
-                        type="email" 
-                        name="email"
-                        placeholder="Адрес электронной почты" 
-                        className={style.inputRegister}
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        required
-                    />
-                    
-                    <input 
-                        type="password" 
-                        name="password"
-                        placeholder="Пароль" 
-                        className={style.inputRegister}
-                        value={formData.password}
-                        
-                        onChange={handleInputChange}
-                        required
-                        minLength={6}
-                    />
-                    
-                    {error && (
-                        <div className={style.errorMessage}>
-                            {error}
-                        </div>
-                    )}
-                    
-                    <div className={style.buttonContainer}>
-                        <button 
-                            type='submit' 
-                            className={style.buttonRegister}
-                            disabled={isLoading}
-                        >
-                            {isLoading ? 'Регистрация...' : 'Зарегистрироваться'}
-                        </button>
-                        
-                        <p className={style.loginText}>
-                            Есть учетная запись?
-                        </p>
-                        <Link to='/auth' className={style.loginLink}>Войти</Link>
-                    </div>
-                </form>
-            </div>
-            <Footer />
-        </>
-    )
-}
+      if (
+        !formData.firstName ||
+        !formData.lastName ||
+        !formData.email ||
+        !formData.password
+      ) {
+        alert('Все поля обязательны для заполнения');
+        return;
+      }
+
+      if (formData.password.length < 8) {
+        alert('Пароль должен содержать минимум 6 символов');
+        return;
+      }
+
+      if (!formData.email.includes('@')) {
+        alert('Введите корректный email адрес');
+        return;
+      }
+
+      const success = await register(formData);
+      if (success) {
+        navigate('/profile');
+      }
+    },
+    [register, navigate, formData]
+  );
+
+  return (
+    <>
+      <Header />
+      <div className={style.container}>
+        <form onSubmit={handleSubmit} className={style.formRegister}>
+          <legend className={style.legendRegister}>Регистрация</legend>
+
+          <AuthInput
+            type="text"
+            name="firstName"
+            placeholder="Имя"
+            className={style.inputRegister}
+            value={formData.firstName}
+            onChange={handleInputChange}
+            required
+          />
+
+          <AuthInput
+            type="text"
+            name="lastName"
+            placeholder="Фамилия"
+            className={style.inputRegister}
+            value={formData.lastName}
+            onChange={handleInputChange}
+            required
+          />
+
+          <AuthInput
+            type="text"
+            name="middleName"
+            placeholder="Отчество"
+            className={style.inputRegister}
+            value={formData.middleName}
+            onChange={handleInputChange}
+          />
+
+          <AuthInput
+            type="email"
+            name="email"
+            placeholder="Адрес электронной почты"
+            className={style.inputRegister}
+            value={formData.email}
+            onChange={handleInputChange}
+            required
+          />
+
+          <AuthInput
+            type="password"
+            name="password"
+            placeholder="Пароль"
+            className={style.inputRegister}
+            value={formData.password}
+            onChange={handleInputChange}
+            required
+            minLength={6}
+          />
+
+          {error && <div className={style.errorMessage}>{error}</div>}
+
+          <div className={style.buttonContainer}>
+            <AuthButton type="submit" isLoading={isLoading}>
+              Зарегистрироваться
+            </AuthButton>
+
+            <p className={style.loginText}>Есть учетная запись?</p>
+            <Link to="/auth" className={style.loginLink}>
+              Войти
+            </Link>
+          </div>
+        </form>
+      </div>
+      <Footer />
+    </>
+  );
+};
 
 export default RegisterPage;

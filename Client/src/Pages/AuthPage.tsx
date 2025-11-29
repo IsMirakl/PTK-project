@@ -1,11 +1,13 @@
 import { useCallback, useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import Header from '../Components/Header.tsx';
 import Footer from '../Components/Footer.tsx';
+import Header from '../Components/Header.tsx';
 
-import style from '../styles/pages/AuthPage.module.css';
+import { AuthButton } from '../Components/forms/AuthButton.tsx';
+import { AuthInput } from '../Components/forms/AuthForm.tsx';
 import { useAuth } from '../hooks/useAuth.ts';
+import style from '../styles/pages/AuthPage.module.css';
 
 const AuthPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -14,30 +16,39 @@ const AuthPage: React.FC = () => {
   const { login, isLoading, error } = useAuth();
   const navigate = useNavigate();
 
-  const handleEmailSubmit = useCallback((e: FormEvent) => {
-    e.preventDefault();
-    if (email && !showPasswordInput) {
-      setShowPasswordInput(true);
-    }
-  }, [email, showPasswordInput]);
-
-  const handleLoginSubmit = useCallback(async (e: FormEvent) => {
-    e.preventDefault();
-    if (email && password) {
-      const success = await login({ email, password });
-      if (success) {
-        navigate('/profile');
+  const handleEmailSubmit = useCallback(
+    (e: FormEvent) => {
+      e.preventDefault();
+      if (email && !showPasswordInput) {
+        setShowPasswordInput(true);
       }
-    }
-  }, [email, password, login, navigate]);
+    },
+    [email, showPasswordInput]
+  );
 
-  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!showPasswordInput) {
-      setEmail(e.target.value);
-    } else {
-      setPassword(e.target.value);
-    }
-  }, [showPasswordInput]);
+  const handleLoginSubmit = useCallback(
+    async (e: FormEvent) => {
+      e.preventDefault();
+      if (email && password) {
+        const success = await login({ email, password });
+        if (success) {
+          navigate('/profile');
+        }
+      }
+    },
+    [email, password, login, navigate]
+  );
+
+  const handleInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (!showPasswordInput) {
+        setEmail(e.target.value);
+      } else {
+        setPassword(e.target.value);
+      }
+    },
+    [showPasswordInput]
+  );
 
   const handleBackToEmail = useCallback(() => {
     setShowPasswordInput(false);
@@ -48,34 +59,34 @@ const AuthPage: React.FC = () => {
     <>
       <Header />
       <div className={style.container}>
-        <form 
-          onSubmit={showPasswordInput ? handleLoginSubmit : handleEmailSubmit} 
+        <form
+          onSubmit={showPasswordInput ? handleLoginSubmit : handleEmailSubmit}
           className={style.formAuth}
         >
           <legend className={style.legendAuth}>С возвращением</legend>
-          
+
           <div style={{ position: 'relative' }}>
             {!showPasswordInput ? (
-              <input 
-                type="email" 
-                placeholder="Адрес электронной почты" 
-                className={style.emailAuth} 
-                value={email} 
+              <AuthInput
+                type="email"
+                placeholder="Адрес электронной почты"
+                value={email}
+                className={style.emailAuth}
                 onChange={handleInputChange}
                 required
               />
             ) : (
               <div style={{ position: 'relative' }}>
-                <input 
-                  type="password" 
-                  placeholder="Пароль" 
-                  className={style.emailAuth} 
-                  value={password}
+                <AuthInput
+                  type="password"
+                  placeholder="Пароль"
+                  value="password"
+                  className={style.emailAuth}
                   onChange={handleInputChange}
-                  required
                 />
-                <button 
-                  type="button" 
+
+                <button
+                  type="button"
                   onClick={handleBackToEmail}
                   style={{
                     position: 'absolute',
@@ -86,7 +97,7 @@ const AuthPage: React.FC = () => {
                     border: 'none',
                     cursor: 'pointer',
                     fontSize: '16px',
-                    color: '#666'
+                    color: '#666',
                   }}
                 >
                   ←
@@ -95,32 +106,29 @@ const AuthPage: React.FC = () => {
             )}
           </div>
 
-          {error && <div style={{ color: 'red', margin: '10px 0' }}>{error}</div>}
+          {error && (
+            <div style={{ color: 'red', margin: '10px 0' }}>{error}</div>
+          )}
 
           <div className={style.buttonContainer}>
-            <button 
-              type='submit' 
-              className={style.buttonAuth} 
-              disabled={isLoading}
-            >
-              {isLoading ? 'Загрузка...' : showPasswordInput ? 'Войти' : 'Продолжить'}
-            </button>
-            
+            <AuthButton type="submit" className={style.buttonAuth}>
+              {showPasswordInput ? 'Войти' : 'Продолжить'}
+            </AuthButton>
+
             {!showPasswordInput && (
               <>
-                <p className={style.registerText}>
-                  У вас нет учетной записи?
-                </p>
-                <Link to='/register' className={style.registerLink}>Зарегистрироваться</Link>
+                <p className={style.registerText}>У вас нет учетной записи?</p>
+                <Link to="/register" className={style.registerLink}>
+                  Зарегистрироваться
+                </Link>
               </>
             )}
           </div>
-
         </form>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
-}
+};
 
 export default AuthPage;
