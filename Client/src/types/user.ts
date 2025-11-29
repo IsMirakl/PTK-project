@@ -1,11 +1,16 @@
-export type UserStatus = 'guest' | 'banned' | 'student' | 'admin' | 'moderator';
+export type UserStatus = 'guest' | 'banned' | 'Студент' | 'admin' | 'moderator';
 
 export interface User {
   id: number,
   fullName: string;
+  avatarUrl?: string;
   email: string;
   status: UserStatus;
+  handle: string;
   registrationDate: string;
+  course?: number;
+  numberGroup?: string;
+  numberPhone?: string;
 }
 
 export interface LoginData {
