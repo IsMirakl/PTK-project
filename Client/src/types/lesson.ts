@@ -7,8 +7,8 @@ export interface LessonDTO {
     id: string;
     name: string;
     description: string;
-    beginAt: string;
-    endsAt: string;
+    beginAt: Date;
+    endsAt: Date;
     state: LessonState;
     courseId: string;
 }
@@ -16,6 +16,6 @@ export interface LessonDTO {
 export interface CreateLessonDTO {
     name: string;
     description: string;
-    beginAt: string;
-    endsAt: string;
+    beginAt: Date;
+    endsAt: Date;
 }

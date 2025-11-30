@@ -10,7 +10,7 @@ export const lessonApi = {
         const response = await api.get(`/v0/lessons/${lessonId}`);
         return response.data;
     },
-    getCourseLessons: async (courseId: string): Promise<LessonDTO> => {
+    getCourseLessons: async (courseId: string): Promise<LessonDTO[]> => {
         const response = await api.get(`/v0/lessons/course/${courseId}`);
         return response.data;
     },
