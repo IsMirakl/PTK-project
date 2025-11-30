@@ -3,9 +3,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 
 import Footer from '../Components/Footer';
-import { AuthButton } from '../Components/forms/AuthButton';
-import { AuthInput } from '../Components/forms/AuthForm';
 import Header from '../Components/Header';
+import { AuthButton } from '../Components/ui/forms/AuthButton';
+import { AuthInput } from '../Components/ui/forms/AuthForm';
 import style from '../styles/pages/RegisterPage.module.css';
 
 const RegisterPage: React.FC = () => {

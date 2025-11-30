@@ -4,8 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import Footer from '../Components/Footer.tsx';
 import Header from '../Components/Header.tsx';
 
-import { AuthButton } from '../Components/forms/AuthButton.tsx';
-import { AuthInput } from '../Components/forms/AuthForm.tsx';
+import { AuthButton } from '../Components/ui/forms/AuthButton.tsx';
+import { AuthInput } from '../Components/ui/forms/AuthForm.tsx';
 import { useAuth } from '../hooks/useAuth.ts';
 import style from '../styles/pages/AuthPage.module.css';
 

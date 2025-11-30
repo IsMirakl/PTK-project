@@ -1,4 +1,4 @@
-import type { ProfileResponseDTO } from '../../types/profile';
+import type { ProfileResponseDTO } from '../../../types/profile';
 import Logotype from "../../assets/logo/Logotype.svg";
 import StatusSt from "../../assets/icons/status_student.svg";
 import styles from "../../styles/pages/ProfilePage.module.css";

@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import imageCourse from '../assets/image/image_course.svg';
 import Footer from '../Components/Footer';
-import { CourseButton } from '../Components/forms/CourseButton';
-import { CourseFormInput } from '../Components/forms/CourseForm';
 import Header from '../Components/Header';
+import { CourseMainInfo } from '../Components/ui/course/CourseMainInfo';
+import { CourseVisitorsInfo } from '../Components/ui/course/CourseVisitorsInfo';
+import { CourseButton } from '../Components/ui/forms/CourseButton';
 import { useCreateCourse } from '../hooks/useCreateCourse';
 import styles from '../styles/pages/CreateCoursePage.module.css';
 
@@ -21,15 +21,6 @@ const CreateCoursePage: React.FC = () => {
   const [courseType, setCourseType] = useState<'private' | 'public'>('private');
 
   const { createCourse, isLoading } = useCreateCourse();
-
-  const handleLoadPreview = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      setPreviewFile(file);
-      const url = URL.createObjectURL(file);
-      setPreviewUrl(url);
-    }
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -78,29 +69,15 @@ const CreateCoursePage: React.FC = () => {
     }
   };
 
-  const handleTagInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && tagInput.trim()) {
-      e.preventDefault();
-      const newTag = tagInput.trim();
-      if (!tags.includes(newTag)) {
-        setTags([...tags, newTag]);
-      }
-      setTagInput('');
+  const handleTagAdd = (tag: string) => {
+    if (!tags.includes(tag)) {
+      setTags([...tags, tag]);
     }
   };
 
-  const handleRemoveTag = (tagToRemove: string) => {
-    setTags(tags.filter(tag => tag !== tagToRemove));
-  };
-
-  const handleParticipantsSliderChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setParticipantsCount(parseInt(e.target.value));
-  };
-
-  const handleCourseTypeChange = (type: 'private' | 'public') => {
-    setCourseType(type);
+  const handlePreviewChange = (file: File | null, url: string) => {
+    setPreviewFile(file);
+    setPreviewUrl(url);
   };
 
   return (
@@ -108,136 +85,28 @@ const CreateCoursePage: React.FC = () => {
       <Header />
       <div className={styles.container}>
         <form onSubmit={handleSubmit} className={styles.form}>
-          <div className={styles.mainInfo}>
-            <div className={styles.inputsFields}>
-              <p>Основная информация</p>
+          <CourseMainInfo
+            name={name}
+            description={description}
+            previewUrl={previewUrl}
+            isLoading={isLoading}
+            onNameChange={setName}
+            onDescriptionChange={setDescription}
+            onPreviewChange={handlePreviewChange}
+          />
 
-              <div className={styles.previewCourse}>
-                <label htmlFor="previewUpload" className={styles.previewLabel}>
-                  <img
-                    src={previewUrl || imageCourse}
-                    alt="Превью курса"
-                    className={styles.previewImage}
-                  />
-                </label>
-
-                <CourseFormInput
-                  type="file"
-                  id="previewUpload"
-                  accept="image/*"
-                  onChange={handleLoadPreview}
-                  className={styles.fileInput}
-                  disabled={isLoading}
-                />
-              </div>
-
-              <label htmlFor="nameCourse">Название курса</label>
-
-              <CourseFormInput
-                type="text"
-                id="nameCourse"
-                value={name}
-                onChange={e => setName(e.target.value)}
-                placeholder="Введите название курса"
-                className={styles.titleInput}
-                disabled={isLoading}
-              />
-
-              <label htmlFor="descriptionCourse">Описание курса</label>
-              <textarea
-                id="descriptionCourse"
-                value={description}
-                onChange={e => setDescription(e.target.value)}
-                placeholder="Введите описание курса"
-                className={styles.descriptionInput}
-                disabled={isLoading}
-                rows={4}
-              />
-            </div>
-          </div>
-
-          <div className={styles.visitorsInfo}>
-            <div className={styles.inputsFields}>
-              <p>Информация для посетителей</p>
-
-              <label htmlFor="tagsCourse">Теги курса</label>
-              <div className={styles.tagsContainer}>
-                <div className={styles.tagsList}>
-                  {tags.map((tag, index) => (
-                    <span key={index} className={styles.tag}>
-                      {tag}
-
-                      <CourseButton
-                        type="button"
-                        onClick={() => handleRemoveTag(tag)}
-                        className={styles.tagRemove}
-                        disabled={isLoading}
-                      >
-                        ×
-                      </CourseButton>
-                    </span>
-                  ))}
-                </div>
-
-                <CourseFormInput
-                  type="text"
-                  id="tagsCourse"
-                  value={tagInput}
-                  onChange={e => setTagInput(e.target.value)}
-                  onKeyDown={handleTagInputKeyDown}
-                  placeholder="Введите тег и нажмите Enter"
-                  className={styles.titleInput}
-                  disabled={isLoading}
-                />
-              </div>
-            </div>
-            <div className={styles.participantsSection}>
-              <div className={styles.participantsControl}>
-                <label htmlFor="countUsers">Количество участников</label>
-                <span className={styles.participantsValue}>
-                  {participantsCount}
-                </span>
-              </div>
-
-              <CourseFormInput
-                type="range"
-                id="countUsersSlider"
-                min={0}
-                max={20}
-                value={participantsCount}
-                onChange={handleParticipantsSliderChange}
-                className={styles.participantsSlider}
-                disabled={isLoading}
-              />
-            </div>
-
-            <div className={styles.typeCourse}>
-              <p>Тип курса</p>
-              <div className={styles.changeType}>
-                <CourseButton
-                  type="button"
-                  onClick={() => handleCourseTypeChange('private')}
-                  className={`${styles.typeButton} ${
-                    courseType === 'private' ? styles.typeButtonActive : ''
-                  }`}
-                  disabled={isLoading}
-                >
-                  Приватный
-                </CourseButton>
-
-                <CourseButton
-                  type="button"
-                  onClick={() => handleCourseTypeChange('public')}
-                  className={`${styles.typeButton} ${
-                    courseType === 'public' ? styles.typeButtonActive : ''
-                  }`}
-                  disabled={isLoading}
-                >
-                  Публичный
-                </CourseButton>
-              </div>
-            </div>
-          </div>
+          <CourseVisitorsInfo
+            tagInput={tagInput}
+            tags={tags}
+            participantsCount={participantsCount}
+            courseType={courseType}
+            isLoading={isLoading}
+            onTagInputChange={setTagInput}
+            onTagAdd={handleTagAdd}
+            onTagRemove={tag => setTags(tags.filter(t => t !== tag))}
+            onParticipantsChange={setParticipantsCount}
+            onCourseTypeChange={setCourseType}
+          />
 
           <CourseButton
             type="submit"
