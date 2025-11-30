@@ -1,6 +1,6 @@
+import StatusSt from '../../../assets/icons/status_student.svg';
+import styles from '../../../styles/pages/ProfilePage.module.css';
 import type { ProfileResponseDTO } from '../../../types/profile';
-import StatusSt from '../../assets/icons/status_student.svg';
-import styles from '../../styles/pages/ProfilePage.module.css';
 
 interface ProfileContacts {
   profile: ProfileResponseDTO;

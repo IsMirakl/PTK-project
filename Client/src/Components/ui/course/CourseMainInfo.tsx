@@ -1,5 +1,5 @@
+import imageCourse from '../../../assets/image/image_course.svg';
 import styles from '../../../styles/pages/CreateCoursePage.module.css';
-import imageCourse from '../assets/image/image_course.svg';
 import { CourseFormInput } from '../forms/CourseForm';
 
 interface CourseMainInfoProps {
@@ -73,6 +73,7 @@ export const CourseMainInfo = ({
           className={styles.descriptionInput}
           disabled={isLoading}
           rows={4}
+          as="textarea"
         />
       </div>
     </div>
